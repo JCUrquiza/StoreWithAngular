@@ -16,7 +16,8 @@ export class MenuComponent {
         label: 'New',
         icon: 'pi pi-fw pi-plus',
         items: [
-          { label: 'Textos', icon: 'pi pi-align-left' }
+          { label: 'Main', icon: 'pi pi-align-left', routerLink: '/' },
+          { label: 'Textos', icon: 'pi pi-align-left', routerLink: 'update' }
         ]
       },
       { label: 'Open', icon: 'pi pi-fw pi-download' },
