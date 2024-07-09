@@ -51,13 +51,13 @@
 
   <div class="col-12 md:col-12">
 
-    <create-company *ngIf="componentCreate" />
+    <create-company *ngIf="componentState.create" />
 
-    <show-company *ngIf="componentRead" />
+    <show-company *ngIf="componentState.read" />
 
-    <update-company *ngIf="componentUpdate" />
+    <update-company *ngIf="componentState.update" />
 
-    <delete-company *ngIf="componentDelete" />
+    <delete-company *ngIf="componentState.delete" />
 
   </div>
 

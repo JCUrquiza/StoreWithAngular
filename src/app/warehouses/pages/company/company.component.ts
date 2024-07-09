@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { CompanyService } from '../../services/company.service';
+import { Component } from '@angular/core';
 
 
 @Component({
@@ -7,56 +6,37 @@ import { CompanyService } from '../../services/company.service';
   templateUrl: './company.component.html',
   styleUrl: './company.component.css'
 })
-export class CompanyComponent implements OnInit {
+export class CompanyComponent {
 
-  public componentCreate: boolean = false;
-  public componentRead: boolean = false;
-  public componentUpdate: boolean = false;
-  public componentDelete: boolean = false;
+  public componentState = {
+    create: false,
+    read: false,
+    update: false,
+    delete: false
+  };
 
-  constructor( private companyService: CompanyService ) {}
-
-  ngOnInit(): void {
-    this.getAllCompanies();
-  }
-
-  getAllCompanies() {
-    this.companyService.getCompanies('/getAll')
-      .subscribe( res => console.log(res)
-    );
-  }
+  constructor() {}
 
   selectAction(action: string) {
 
+    this.componentState.create = false;
+    this.componentState.read = false;
+    this.componentState.update = false;
+    this.componentState.delete = false;
+
     switch (action) {
       case 'create':
-        this.componentCreate = true;
-        this.componentRead = false;
-        this.componentUpdate = false;
-        this.componentDelete = false
+        this.componentState.create = true;
         break;
-
       case 'read':
-        this.componentCreate = false;
-        this.componentRead = true;
-        this.componentUpdate = false;
-        this.componentDelete = false;
+        this.componentState.read = true;
         break;
-
       case 'update':
-        this.componentCreate = false;
-        this.componentRead = false;
-        this.componentUpdate = true;
-        this.componentDelete = false;
+        this.componentState.update = true;
         break;
-
       case 'delete':
-        this.componentCreate = false;
-        this.componentRead = false;
-        this.componentUpdate = false;
-        this.componentDelete = true;
+        this.componentState.delete = true;
         break;
-
       default:
         break;
     }
