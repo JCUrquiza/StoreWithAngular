@@ -1,16 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreatingWarehousesComponent } from './pages/creating-warehouses/creating-warehouses.component';
-import { UpdateWarehousesComponent } from './pages/update-warehouses/update-warehouses.component';
+import { CompanyComponent } from './pages/company/company.component';
+import { WarehousesComponent } from './pages/warehouses/warehouses.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { WarehousesMovementsComponent } from './pages/warehouses-movements/warehouses-movements.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: CreatingWarehousesComponent
+    component: CompanyComponent
   },
   {
-    path: 'update',
-    component: UpdateWarehousesComponent
+    path: 'warehouses',
+    component: WarehousesComponent
+  },
+  {
+    path: 'products',
+    component: ProductsComponent
+  },
+  {
+    path: 'warehouses-movements',
+    component: WarehousesMovementsComponent
   },
   {
     path: '**',
@@ -23,3 +33,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class WarehousesRoutingModule { }
+

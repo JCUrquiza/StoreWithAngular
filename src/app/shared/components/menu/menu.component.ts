@@ -13,11 +13,13 @@ export class MenuComponent {
   ngOnInit() {
     this.menuItems = [
       {
-        label: 'New',
-        icon: 'pi pi-fw pi-plus',
+        label: 'Warehouse system',
+        icon: 'pi pi-fw pi-warehouse',
         items: [
-          { label: 'Main', icon: 'pi pi-align-left', routerLink: '/' },
-          { label: 'Textos', icon: 'pi pi-align-left', routerLink: 'update' }
+          { label: 'Main', icon: 'pi pi-building-columns', routerLink: '/' },
+          { label: 'Warehouses', icon: 'pi pi-shop', routerLink: 'warehouses' },
+          { label: 'Products', icon: 'pi pi-hammer', routerLink: 'products' },
+          { label: 'Warehouse movements', icon: 'pi pi-arrow-right-arrow-left', routerLink: 'warehouses-movements' },
         ]
       },
       { label: 'Open', icon: 'pi pi-fw pi-download' },

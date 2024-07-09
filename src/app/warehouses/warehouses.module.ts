@@ -2,18 +2,24 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { WarehousesRoutingModule } from './warehouses-routing.module';
-import { CreatingWarehousesComponent } from './pages/creating-warehouses/creating-warehouses.component';
-import { UpdateWarehousesComponent } from './pages/update-warehouses/update-warehouses.component';
+import { WarehousesComponent } from './pages/warehouses/warehouses.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { CompanyComponent } from './pages/company/company.component';
+import { WarehousesMovementsComponent } from './pages/warehouses-movements/warehouses-movements.component';
+import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 
 
 @NgModule({
   declarations: [
-    CreatingWarehousesComponent,
-    UpdateWarehousesComponent
+    WarehousesComponent,
+    ProductsComponent,
+    CompanyComponent,
+    WarehousesMovementsComponent
   ],
   imports: [
     CommonModule,
-    WarehousesRoutingModule
+    WarehousesRoutingModule,
+    PrimeNgModule
   ]
 })
 export class WarehousesModule { }
