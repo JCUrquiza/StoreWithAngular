@@ -10,23 +10,55 @@
 
   <div class="col-12 md:col-3">
     <p-card>
-      <p-button class="flex justify-content-center" label="Crear" severity="success" />
+      <p-button
+        class="flex justify-content-center"
+        label="Crear"
+        severity="success"
+        (onClick)="selectAction('create')"
+      />
     </p-card>
   </div>
   <div class="col-12 md:col-3">
     <p-card>
-      <p-button class="flex justify-content-center" label="Actualizar" severity="help" />
+      <p-button
+        class="flex justify-content-center"
+        label="Actualizar"
+        severity="help"
+        (onClick)="selectAction('update')"
+      />
     </p-card>
   </div>
   <div class="col-12 md:col-3">
     <p-card>
-      <p-button class="flex justify-content-center" label="Mostrar" severity="info" />
+      <p-button
+        class="flex justify-content-center"
+        label="Mostrar"
+        severity="info"
+        (onClick)="selectAction('read')"
+      />
     </p-card>
   </div>
   <div class="col-12 md:col-3">
     <p-card>
-      <p-button class="flex justify-content-center" label="Eliminar" severity="danger" />
+      <p-button
+        class="flex justify-content-center"
+        label="Eliminar"
+        severity="danger"
+        (onClick)="selectAction('delete')"
+      />
     </p-card>
+  </div>
+
+  <div class="col-12 md:col-12">
+
+    <create-company *ngIf="componentCreate" />
+
+    <show-company *ngIf="componentRead" />
+
+    <update-company *ngIf="componentUpdate" />
+
+    <delete-company *ngIf="componentDelete" />
+
   </div>
 
 </div>
