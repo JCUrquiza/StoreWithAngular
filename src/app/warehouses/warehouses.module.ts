@@ -11,6 +11,7 @@ import { CreateCompanyComponent } from './components/company/create-company/crea
 import { UpdateCompanyComponent } from './components/company/update-company/update-company.component';
 import { ShowCompanyComponent } from './components/company/show-company/show-company.component';
 import { DeleteCompanyComponent } from './components/company/delete-company/delete-company.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { DeleteCompanyComponent } from './components/company/delete-company/dele
   imports: [
     CommonModule,
     WarehousesRoutingModule,
-    PrimeNgModule
+    PrimeNgModule,
+    ReactiveFormsModule,
   ]
 })
 export class WarehousesModule { }

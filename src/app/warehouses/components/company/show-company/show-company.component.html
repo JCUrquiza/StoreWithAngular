@@ -1,1 +1,49 @@
-<p>show-company works!</p>
+<form [formGroup]="companyForm">
+
+
+<div class="flex flex-column gap-2 px-3">
+
+  <div class="grid">
+
+    <div class="flex flex-column col-12 md:col-4">
+      <label for="name">Name</label>
+      <input
+        pInputText
+        id="name"
+        aria-describedby="name-help"
+        formControlName="name"
+        readonly
+      />
+    </div>
+
+    <div class="flex flex-column col-12 md:col-4">
+      <label for="email">Email</label>
+      <input
+        pInputText
+        id="email"
+        aria-describedby="email-help"
+        formControlName="email"
+        readonly
+      />
+    </div>
+
+    <div class="flex flex-column col-12 md:col-4">
+      <label for="name">Address</label>
+      <input
+        pInputText
+        id="address"
+        aria-describedby="address-help"
+        formControlName="address"
+        readonly
+      />
+    </div>
+
+  </div>
+
+</div>
+
+
+</form>
+
+
+

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CompanyResponse } from '../interfaces';
 
 
 @Injectable({
@@ -12,8 +13,8 @@ export class CompanyService {
 
   constructor( private http: HttpClient ) {}
 
-  getCompanies(api: string): Observable<any> {
-    return this.http.get<any>(this.apiURL + api);
+  getCompanies(api: string): Observable<CompanyResponse> {
+    return this.http.get<CompanyResponse>(this.apiURL + api);
   }
 
 }
