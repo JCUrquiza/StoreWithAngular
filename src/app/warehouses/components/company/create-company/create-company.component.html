@@ -27,7 +27,13 @@
           aria-describedby="email-help"
           formControlName="email"
         />
-        <small id="email-help">Enter the email of the company</small>
+        <small
+          *ngIf="isNotValidField('email')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('email') }}
+        </small>
+        <!-- <small id="email-help">Enter the email of the company</small> -->
       </div>
 
       <div class="flex flex-column col-12 md:col-3">

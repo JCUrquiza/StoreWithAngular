@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CompanyService } from '../../../services/company.service';
+import { ValidatorsService } from '../../../../shared/service/validators.service';
 
 @Component({
   selector: 'create-company',
@@ -10,18 +11,19 @@ import { CompanyService } from '../../../services/company.service';
 export class CreateCompanyComponent {
 
   public myForm: FormGroup = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(5)]],
-    email: ['', [Validators.required]],
-    address: ['', [Validators.required]]
+    name: ['', [ Validators.required, Validators.minLength(5) ]],
+    email: ['', [ Validators.required, Validators.pattern(this.validatorsService.emailPattern) ]],
+    address: ['', [ Validators.required ]]
   });
 
   constructor(
     private fb: FormBuilder,
     private companyService: CompanyService,
+    private validatorsService: ValidatorsService,
   ) {}
 
   isNotValidField( field: string ): boolean | null {
-    return this.myForm.controls[field].errors && this.myForm.controls[field].touched;
+    return this.validatorsService.isNotValidField(this.myForm, field);
   }
 
   getFieldError( field: string ): string | null {
@@ -31,11 +33,14 @@ export class CreateCompanyComponent {
     const errors = this.myForm.controls[field].errors || {};
 
     for (const key of Object.keys(errors) ) {
+      console.log(key);
       switch( key ) {
         case 'required':
           return 'Este campo es requerido';
         case 'minlength':
           return `Mínimo ${ errors['minlength'].requiredLength } caracteres.`;
+        case 'pattern':
+          return 'Email no válido'
       }
     }
 
