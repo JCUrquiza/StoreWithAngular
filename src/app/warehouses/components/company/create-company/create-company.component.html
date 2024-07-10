@@ -33,7 +33,6 @@
         >
           {{ getFieldError('email') }}
         </small>
-        <!-- <small id="email-help">Enter the email of the company</small> -->
       </div>
 
       <div class="flex flex-column col-12 md:col-3">
@@ -44,7 +43,12 @@
           aria-describedby="address-help"
           formControlName="address"
         />
-        <small id="address-help">Enter the address of the company</small>
+        <small
+          *ngIf="isNotValidField('address')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('address') }}
+        </small>
       </div>
 
       <div class="flex flex-column col-12 md:col-3">

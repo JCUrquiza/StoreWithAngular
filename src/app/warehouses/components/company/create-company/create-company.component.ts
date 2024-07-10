@@ -13,7 +13,7 @@ export class CreateCompanyComponent {
   public myForm: FormGroup = this.fb.group({
     name: ['', [ Validators.required, Validators.minLength(5) ]],
     email: ['', [ Validators.required, Validators.pattern(this.validatorsService.emailPattern) ]],
-    address: ['', [ Validators.required ]]
+    address: ['', [ Validators.required, Validators.minLength(6) ]]
   });
 
   constructor(
@@ -27,24 +27,7 @@ export class CreateCompanyComponent {
   }
 
   getFieldError( field: string ): string | null {
-
-    if ( !this.myForm.controls[field] ) return null;
-
-    const errors = this.myForm.controls[field].errors || {};
-
-    for (const key of Object.keys(errors) ) {
-      console.log(key);
-      switch( key ) {
-        case 'required':
-          return 'Este campo es requerido';
-        case 'minlength':
-          return `Mínimo ${ errors['minlength'].requiredLength } caracteres.`;
-        case 'pattern':
-          return 'Email no válido'
-      }
-    }
-
-    return null;
+    return this.validatorsService.getMessageError(this.myForm, field);
   }
 
   saveCompany() {

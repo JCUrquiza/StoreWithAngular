@@ -12,4 +12,23 @@ export class ValidatorsService {
     return form.controls[field].errors && form.controls[field].touched;
   }
 
+  public getMessageError( form: FormGroup, field: string ): string | null {
+    if ( !form.controls[field] ) return null;
+
+    const errors = form.controls[field].errors || {};
+
+    for (const key of Object.keys(errors) ) {
+      switch( key ) {
+        case 'required':
+          return 'Este campo es requerido';
+        case 'minlength':
+          return `Mínimo ${ errors['minlength'].requiredLength } caracteres.`;
+        case 'pattern':
+          return 'Email no válido'
+      }
+    }
+
+    return null;
+  }
+
 }
