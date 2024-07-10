@@ -17,4 +17,8 @@ export class CompanyService {
     return this.http.get<CompanyResponse>(this.apiURL + api);
   }
 
+  createCompany(api: string, body: any): Observable<any> {
+    return this.http.post(this.apiURL + api, body);
+  }
+
 }

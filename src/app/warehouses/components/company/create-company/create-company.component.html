@@ -1,39 +1,59 @@
-<div class="flex flex-column gap-2 px-3">
+<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="saveCompany()">
 
-  <div class="grid">
+  <div class="flex flex-column gap-2 px-3">
 
-    <div class="flex flex-column col-12 md:col-4">
-      <label for="name">Name</label>
-      <input
-        pInputText
-        id="name"
-        aria-describedby="name-help"
-      />
-      <small id="name-help">Enter the name of the company</small>
-    </div>
+    <div class="grid">
 
-    <div class="flex flex-column col-12 md:col-4">
-      <label for="email">Email</label>
-      <input
-        pInputText
-        id="email"
-        aria-describedby="email-help"
-      />
-      <small id="email-help">Enter the email of the company</small>
-    </div>
+      <div class="flex flex-column col-12 md:col-3">
+        <label for="name">Name</label>
+        <input
+          pInputText
+          id="name"
+          formControlName="name"
+        />
+        <small
+          *ngIf="isNotValidField('name')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('name') }}
+        </small>
+      </div>
 
-    <div class="flex flex-column col-12 md:col-4">
-      <label for="name">Address</label>
-      <input
+      <div class="flex flex-column col-12 md:col-3">
+        <label for="email">Email</label>
+        <input
+          pInputText
+          id="email"
+          aria-describedby="email-help"
+          formControlName="email"
+        />
+        <small id="email-help">Enter the email of the company</small>
+      </div>
+
+      <div class="flex flex-column col-12 md:col-3">
+        <label for="name">Address</label>
+        <input
           pInputText
           id="address"
           aria-describedby="address-help"
-      />
-      <small id="address-help">Enter the address of the company</small>
+          formControlName="address"
+        />
+        <small id="address-help">Enter the address of the company</small>
+      </div>
+
+      <div class="flex flex-column col-12 md:col-3">
+
+        <p-button
+          class="flex justify-content-center pt-3"
+          label="Enviar"
+          type="submit"
+        />
+
+      </div>
+
     </div>
 
   </div>
 
-</div>
-
+</form>
 
