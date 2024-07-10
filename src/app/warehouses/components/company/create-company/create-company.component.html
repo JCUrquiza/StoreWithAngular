@@ -57,6 +57,7 @@
           class="flex justify-content-center pt-3"
           label="Enviar"
           type="submit"
+          pRipple
         />
 
       </div>
@@ -66,4 +67,11 @@
   </div>
 
 </form>
+
+<p-toast
+  [showTransformOptions]="'translateY(100%)'"
+  [showTransitionOptions]="'1000ms'"
+  [hideTransitionOptions]="'1000ms'"
+  [hideTransformOptions]="'translateX(100%)'"
+></p-toast>
 

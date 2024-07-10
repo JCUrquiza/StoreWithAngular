@@ -3,10 +3,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CompanyService } from '../../../services/company.service';
 import { ValidatorsService } from '../../../../shared/service/validators.service';
 
+import { MessageService } from 'primeng/api';
+import { tap } from 'rxjs';
+
 @Component({
   selector: 'create-company',
   templateUrl: './create-company.component.html',
-  styleUrl: './create-company.component.css'
+  styleUrl: './create-company.component.css',
+  providers: [MessageService]
 })
 export class CreateCompanyComponent {
 
@@ -20,6 +24,7 @@ export class CreateCompanyComponent {
     private fb: FormBuilder,
     private companyService: CompanyService,
     private validatorsService: ValidatorsService,
+    private messageService: MessageService,
   ) {}
 
   isNotValidField( field: string ): boolean | null {
@@ -42,17 +47,22 @@ export class CreateCompanyComponent {
       email: this.myForm.value.email,
       address: this.myForm.value.address
     };
-    this.companyService.createCompany('/create', body)
-      .subscribe( resp => {
-        console.log(resp);
-        // const company = {
-        //   name: '',
-        //   email: '',
-        //   address: ''
-        // }
-        // Usando en NgOnInit:
-        // this.myForm.reset( company );
-      });
+    this.companyService.createCompany('/create', body).pipe(
+      tap({
+        next: (resp) => {
+          console.log(resp);
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Company created successfully' });
+          this.myForm.reset({
+            name: '',
+            email: '',
+            address: ''
+          });
+        },
+        error: (error) => {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Company creation failed' });
+        }
+      })
+    ).subscribe();
 
     this.myForm.reset({
       name: '',
