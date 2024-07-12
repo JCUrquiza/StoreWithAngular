@@ -1,49 +1,88 @@
-<form [formGroup]="companyForm">
-
-
 <div class="flex flex-column gap-2 px-3">
 
-  <div class="grid">
+  <div class="grid" *ngFor="let company of companies">
 
-    <div class="flex flex-column col-12 md:col-4">
+    <div class="flex flex-column col-12 md:col-3">
       <label for="name">Name</label>
       <input
         pInputText
         id="name"
         aria-describedby="name-help"
-        formControlName="name"
         readonly
-      />
-    </div>
+        [value]="company.name"
+        />
+      </div>
 
-    <div class="flex flex-column col-12 md:col-4">
+    <div class="flex flex-column col-12 md:col-3">
       <label for="email">Email</label>
       <input
         pInputText
         id="email"
         aria-describedby="email-help"
-        formControlName="email"
         readonly
-      />
-    </div>
+        [value]="company.email"
+        />
+      </div>
 
-    <div class="flex flex-column col-12 md:col-4">
+    <div class="flex flex-column col-12 md:col-3">
       <label for="name">Address</label>
       <input
         pInputText
         id="address"
         aria-describedby="address-help"
-        formControlName="address"
         readonly
+        [value]="company.address"
       />
+    </div>
+
+    <div class="grid gap-2 col-12 md:col-3">
+
+      <p-button
+        class="p-4"
+        label="Update"
+        severity="help"
+        (onClick)="updateCompany(company.id)"
+      />
+
+      <p-button
+        class="p-4"
+        label="Delete"
+        severity="danger"
+        (onClick)="confirmDelete(company.id)"
+      />
+
     </div>
 
   </div>
 
+  <p-toast />
+  <p-confirmDialog #cd>
+    <ng-template pTemplate="headless" let-message>
+      <div class="flex flex-column align-items-center p-5 surface-overlay border-round">
+        <div class="border-circle bg-primary inline-flex justify-content-center align-items-center h-6rem w-6rem">
+          <i class="pi pi-question text-5xl"></i>
+        </div>
+        <span class="font-bold text-2xl block mb-2 mt-4">
+          {{ message.header }}
+        </span>
+        <p class="mb-0">{{ message.message }}</p>
+        <div class="flex align-items-center gap-2 mt-4">
+          <button
+            pButton
+            label="Delete"
+            (click)="cd.accept()"
+            class="w-8rem">
+          </button>
+          <button
+            pButton
+            label="Cancel"
+            (click)="cd.reject()"
+            class="p-button-outlined w-8rem ">
+          </button>
+        </div>
+      </div>
+    </ng-template>
+  </p-confirmDialog>
+
 </div>
-
-
-</form>
-
-
 

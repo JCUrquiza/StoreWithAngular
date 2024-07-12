@@ -21,4 +21,8 @@ export class CompanyService {
     return this.http.post(this.apiURL + api, body);
   }
 
+  deleteCompany(api: string, id: number) {
+    return this.http.delete(`${this.apiURL}${api}/${id}`);
+  }
+
 }

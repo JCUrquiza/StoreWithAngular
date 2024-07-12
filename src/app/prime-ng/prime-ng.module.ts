@@ -8,6 +8,10 @@ import { PanelModule } from 'primeng/panel';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+
+import { ConfirmationService, MessageService } from 'primeng/api';
+
 
 @NgModule({
   exports: [
@@ -19,6 +23,11 @@ import { ToastModule } from 'primeng/toast';
     PanelModule,
     InputTextModule,
     ToastModule,
+    ConfirmDialogModule,
+  ],
+  providers: [
+    ConfirmationService,
+    MessageService
   ]
 })
 export class PrimeNgModule { }

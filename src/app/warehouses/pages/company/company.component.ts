@@ -11,7 +11,6 @@ export class CompanyComponent {
     create: false,
     read: false,
     update: false,
-    delete: false
   };
 
   constructor() {}
@@ -21,7 +20,6 @@ export class CompanyComponent {
     this.componentState.create = false;
     this.componentState.read = false;
     this.componentState.update = false;
-    this.componentState.delete = false;
 
     switch (action) {
       case 'create':
@@ -32,9 +30,6 @@ export class CompanyComponent {
         break;
       case 'update':
         this.componentState.update = true;
-        break;
-      case 'delete':
-        this.componentState.delete = true;
         break;
       default:
         break;
