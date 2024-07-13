@@ -8,7 +8,7 @@ import { BranchOfficeResponse } from '../interfaces';
 })
 export class BranchOfficeService {
 
-  private apiURL = 'http://localhost:3000/api/branchesOffices';
+  private apiURL = 'http://localhost:3000/api/v1/branchesOffices';
 
   public componentBranchOfficeState = {
     create: false,
@@ -45,6 +45,12 @@ export class BranchOfficeService {
 
   getAll(url: string): Observable<BranchOfficeResponse> {
     return this.http.get<BranchOfficeResponse>( this.apiURL + url );
+  }
+
+  updateBranchoffice() {}
+
+  deleteBranchOffice(url: string, id: number) {
+    return this.http.delete(`${this.apiURL}${url}/${id}`);
   }
 
 }

@@ -9,7 +9,7 @@ import { Company, CompanyResponse, UpdateCompanyResponse } from '../interfaces';
 })
 export class CompanyService {
 
-  private apiURL = 'http://localhost:3000/api/company';
+  private apiURL = 'http://localhost:3000/api/v1/company';
 
   public companiesSaved: Company[] = [];
 
