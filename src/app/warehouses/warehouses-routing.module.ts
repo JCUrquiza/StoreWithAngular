@@ -4,11 +4,16 @@ import { CompanyComponent } from './pages/company/company.component';
 import { WarehousesComponent } from './pages/warehouses/warehouses.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { WarehousesMovementsComponent } from './pages/warehouses-movements/warehouses-movements.component';
+import { BranchOfficesComponent } from './pages/branch-offices/branch-offices.component';
 
 const routes: Routes = [
   {
     path: '',
     component: CompanyComponent
+  },
+  {
+    path: 'branch-offices',
+    component: BranchOfficesComponent
   },
   {
     path: 'warehouses',

@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 import { WarehousesRoutingModule } from './warehouses-routing.module';
 import { WarehousesComponent } from './pages/warehouses/warehouses.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { CompanyComponent } from './pages/company/company.component';
 import { WarehousesMovementsComponent } from './pages/warehouses-movements/warehouses-movements.component';
-import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 import { CreateCompanyComponent } from './components/company/create-company/create-company.component';
 import { ShowCompanyComponent } from './components/company/show-company/show-company.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { CreateWarehousesComponent } from './components/warehouses/create-warehouses/create-warehouses.component';
+import { ShowWarehousesComponent } from './components/warehouses/show-warehouses/show-warehouses.component';
+import { BranchOfficesComponent } from './pages/branch-offices/branch-offices.component';
+import { CreateBranchofficeComponent } from './components/branchOffices/create-branchoffice/create-branchoffice.component';
+import { ShowBranchofficeComponent } from './components/branchOffices/show-branchoffice/show-branchoffice.component';
 
 
 @NgModule({
@@ -20,6 +24,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     WarehousesMovementsComponent,
     CreateCompanyComponent,
     ShowCompanyComponent,
+    CreateWarehousesComponent,
+    ShowWarehousesComponent,
+    BranchOfficesComponent,
+    CreateBranchofficeComponent,
+    ShowBranchofficeComponent,
   ],
   imports: [
     CommonModule,

@@ -11,7 +11,6 @@ export class CompanyComponent {
   public actionOfCrudFromService = {
     create: false,
     read: false,
-    update: false,
   };
 
   constructor(

@@ -9,7 +9,6 @@ export class WarehousesService {
   public componentState = {
     create: false,
     read: false,
-    update: false,
   };
 
   public companySaved: Company[] = [];
@@ -20,7 +19,6 @@ export class WarehousesService {
 
     this.componentState.create = false;
     this.componentState.read = false;
-    this.componentState.update = false;
 
     switch (action) {
       case 'create':
@@ -28,9 +26,6 @@ export class WarehousesService {
         break;
       case 'read':
         this.componentState.read = true;
-        break;
-      case 'update':
-        this.componentState.update = true;
         break;
       default:
         break;

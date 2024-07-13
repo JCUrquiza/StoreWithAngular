@@ -3,7 +3,6 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { tap } from 'rxjs';
 import { CompanyService } from '../../../services/company.service';
 import { Company } from '../../../interfaces';
-import { WarehousesService } from '../../../services/warehouses.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidatorsService } from '../../../../shared/service/validators.service';
 

@@ -16,8 +16,9 @@ export class MenuComponent {
         label: 'Warehouse system',
         icon: 'pi pi-fw pi-warehouse',
         items: [
-          { label: 'Main', icon: 'pi pi-building-columns', routerLink: '/' },
-          { label: 'Warehouses', icon: 'pi pi-shop', routerLink: 'warehouses' },
+          { label: 'Companies', icon: 'pi pi-building-columns', routerLink: '/' },
+          { label: 'Branch offices', icon: 'pi pi-shop', routerLink: '/branch-offices' },
+          { label: 'Warehouses', icon: 'pi pi-inbox', routerLink: 'warehouses' },
           { label: 'Products', icon: 'pi pi-hammer', routerLink: 'products' },
           { label: 'Warehouse movements', icon: 'pi pi-arrow-right-arrow-left', routerLink: 'warehouses-movements' },
         ]

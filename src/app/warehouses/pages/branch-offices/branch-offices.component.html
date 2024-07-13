@@ -1,0 +1,44 @@
+<p-panel header="Branch Offices" class="p-1 custom-panel-header">
+  <p>
+    In this module, you can create branches and associate them with companies.
+    You can also review the general information of a branch, edit it and delete it.
+  </p>
+</p-panel>
+
+<div class="grid mt-2">
+
+  <div class="col-12 md:col-3">
+    <p-card>
+      <p-button
+        class="flex justify-content-center"
+        label="Add"
+        severity="success"
+        (onClick)="selectAction('create')"
+      />
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-3">
+    <p-card>
+      <p-button
+        class="flex justify-content-center"
+        label="Show"
+        severity="info"
+        (onClick)="selectAction('read')"
+      />
+    </p-card>
+  </div>
+
+
+  <div class="col-12 md:col-12">
+
+    <create-branchoffice *ngIf="actionOfCrudFromService.create" />
+
+    <show-branchoffice *ngIf="actionOfCrudFromService.read" />
+
+  </div>
+
+
+</div>
+
+
