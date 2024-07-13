@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CompanyResponse } from '../interfaces';
+import { CompanyResponse, UpdateCompanyResponse } from '../interfaces';
 
 
 @Injectable({
@@ -19,6 +19,10 @@ export class CompanyService {
 
   createCompany(api: string, body: any): Observable<any> {
     return this.http.post(this.apiURL + api, body);
+  }
+
+  updateCompany(api: string, body: any): Observable<UpdateCompanyResponse> {
+    return this.http.put<UpdateCompanyResponse>(this.apiURL + api, body);
   }
 
   deleteCompany(api: string, id: number) {

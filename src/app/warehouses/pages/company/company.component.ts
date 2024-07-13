@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WarehousesService } from '../../services/warehouses.service';
 
 @Component({
   selector: 'app-company',
@@ -7,34 +8,20 @@ import { Component } from '@angular/core';
 })
 export class CompanyComponent {
 
-  public componentState = {
+  public actionOfCrudFromService = {
     create: false,
     read: false,
     update: false,
   };
 
-  constructor() {}
+  constructor(
+    private warehousesService: WarehousesService
+  ) {}
 
   selectAction(action: string) {
-
-    this.componentState.create = false;
-    this.componentState.read = false;
-    this.componentState.update = false;
-
-    switch (action) {
-      case 'create':
-        this.componentState.create = true;
-        break;
-      case 'read':
-        this.componentState.read = true;
-        break;
-      case 'update':
-        this.componentState.update = true;
-        break;
-      default:
-        break;
-    }
-
+    this.actionOfCrudFromService = this.warehousesService.showActionOFCrud(action);
   }
 
 }
+
+

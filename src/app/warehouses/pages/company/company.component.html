@@ -1,8 +1,8 @@
-<p-panel header="Empresas" class="p-1">
+<p-panel header="Companies" class="p-1">
   <p>
-    En este módulo se podrán gestionar las empresas de manera eficiente.
-    Visualiza todas las empresas existentes, crea nuevas, edita la información
-    de las actuales y elimina aquellas que ya no necesites.
+    In this module you can manage your companies efficiently.
+    View all existing companies, create new ones, edit the
+    information of current ones and delete those you no longer need.
   </p>
 </p-panel>
 
@@ -51,11 +51,9 @@
 
   <div class="col-12 md:col-12">
 
-    <create-company *ngIf="componentState.create" />
+    <create-company *ngIf="actionOfCrudFromService.create" />
 
-    <show-company *ngIf="componentState.read" />
-
-    <update-company *ngIf="componentState.update" />
+    <show-company *ngIf="actionOfCrudFromService.read" />
 
   </div>
 

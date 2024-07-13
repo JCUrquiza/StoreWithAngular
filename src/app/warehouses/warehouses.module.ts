@@ -8,9 +8,7 @@ import { CompanyComponent } from './pages/company/company.component';
 import { WarehousesMovementsComponent } from './pages/warehouses-movements/warehouses-movements.component';
 import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 import { CreateCompanyComponent } from './components/company/create-company/create-company.component';
-import { UpdateCompanyComponent } from './components/company/update-company/update-company.component';
 import { ShowCompanyComponent } from './components/company/show-company/show-company.component';
-import { DeleteCompanyComponent } from './components/company/delete-company/delete-company.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
@@ -21,9 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CompanyComponent,
     WarehousesMovementsComponent,
     CreateCompanyComponent,
-    UpdateCompanyComponent,
     ShowCompanyComponent,
-    DeleteCompanyComponent
   ],
   imports: [
     CommonModule,

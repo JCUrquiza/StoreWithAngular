@@ -1,57 +1,77 @@
 <div class="flex flex-column gap-2 px-3">
 
-  <div class="grid" *ngFor="let company of companies">
+  <div class="grid" *ngFor="let company of companies; let i = index">
 
-    <div class="flex flex-column col-12 md:col-3">
-      <label for="name">Name</label>
-      <input
-        pInputText
-        id="name"
-        aria-describedby="name-help"
-        readonly
-        [value]="company.name"
+    <form class="grid col-12" autocomplete="off" [formGroup]="companyForms[i]" (ngSubmit)="onSubmit(companyForms[i].value)">
+
+      <div class="flex flex-column col-12 md:col-3">
+        <label for="name">Name</label>
+        <input
+          pInputText
+          id="name"
+          aria-describedby="name-help"
+          formControlName="name"
         />
+        <small
+          *ngIf="isNotValidField('name', i)"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('name', i) }}
+        </small>
       </div>
 
-    <div class="flex flex-column col-12 md:col-3">
-      <label for="email">Email</label>
-      <input
-        pInputText
-        id="email"
-        aria-describedby="email-help"
-        readonly
-        [value]="company.email"
+      <div class="flex flex-column col-12 md:col-3">
+        <label for="email">Email</label>
+        <input
+          pInputText
+          id="email"
+          aria-describedby="email-help"
+          formControlName="email"
         />
+        <small
+          *ngIf="isNotValidField('email', i)"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('email', i) }}
+        </small>
       </div>
 
-    <div class="flex flex-column col-12 md:col-3">
-      <label for="name">Address</label>
-      <input
-        pInputText
-        id="address"
-        aria-describedby="address-help"
-        readonly
-        [value]="company.address"
-      />
-    </div>
+      <div class="flex flex-column col-12 md:col-3">
+        <label for="name">Address</label>
+        <input
+          pInputText
+          id="address"
+          aria-describedby="address-help"
+          formControlName="address"
+        />
+        <small
+          *ngIf="isNotValidField('address', i)"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('address', i) }}
+        </small>
+      </div>
 
-    <div class="grid gap-2 col-12 md:col-3">
+      <div class="grid gap-2 col-12 md:col-3">
 
-      <p-button
-        class="p-4"
-        label="Update"
-        severity="help"
-        (onClick)="updateCompany(company.id)"
-      />
+        <p-button
+          class="p-4"
+          label="Update"
+          severity="help"
+          (onClick)="updateCompany(company.id)"
+        />
 
-      <p-button
-        class="p-4"
-        label="Delete"
-        severity="danger"
-        (onClick)="confirmDelete(company.id)"
-      />
+        <p-button
+          class="p-4"
+          label="Delete"
+          severity="danger"
+          (onClick)="confirmDelete(company.id)"
+        />
 
-    </div>
+      </div>
+
+    </form>
+
 
   </div>
 
