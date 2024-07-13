@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { BranchOfficeResponse } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +41,10 @@ export class BranchOfficeService {
 
   createBranchOffice(url: string, body: any) {
     return this.http.post( this.apiURL + url, body );
+  }
+
+  getAll(url: string): Observable<BranchOfficeResponse> {
+    return this.http.get<BranchOfficeResponse>( this.apiURL + url );
   }
 
 }
