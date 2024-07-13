@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { tap } from 'rxjs';
 import { BranchOfficeService } from '../../../services/branch-office.service';
 import { BranchesOffice } from '../../../interfaces';
-import { tap } from 'rxjs';
+import { ValidatorsService } from '../../../../shared/service/validators.service';
 
 
 @Component({
@@ -12,19 +14,36 @@ import { tap } from 'rxjs';
 })
 export class ShowBranchofficeComponent implements OnInit {
 
+  // TODO: Editar también la empresa
+
   public branchesOffices: BranchesOffice[] = [];
+  public showDialogToUpdateBranchOffice: boolean = false;
+
+  public editForm: FormGroup;
+  private selectedBranchOfficeId: number | null = null;
 
   constructor(
     private messageService: MessageService,
     private branchOfficeService: BranchOfficeService,
     private confirmationService: ConfirmationService,
-  ) {}
-
-  ngOnInit(): void {
-    this.showAllBranchOffices();
+    private fb: FormBuilder,
+    private validatorsService: ValidatorsService
+  ) {
+    this.editForm = this.fb.group({
+      idCompany: [null],
+      idBranch: [null],
+      name: ['', [Validators.required, Validators.minLength(4)]],
+      address: ['', [Validators.required, Validators.minLength(6)]],
+      email: ['', [Validators.required, Validators.pattern(this.validatorsService.emailPattern)]],
+      state: ['', [Validators.required, Validators.minLength(4)]]
+    });
   }
 
-  showAllBranchOffices() {
+  ngOnInit(): void {
+    this.loadBranchOffices();
+  }
+
+  loadBranchOffices() {
     this.branchOfficeService.getAll('/getAll')
       .subscribe( resp => {
         console.log(resp);
@@ -33,7 +52,64 @@ export class ShowBranchofficeComponent implements OnInit {
       });
   }
 
+  openEditDialog(branchOffice: any): void {
 
+    this.selectedBranchOfficeId = branchOffice.id;
+    this.editForm.patchValue({
+      idCompany: branchOffice.company.id,
+      idBranch: branchOffice.id,
+      name: branchOffice.name,
+      address: branchOffice.address,
+      email: branchOffice.email,
+      state: branchOffice.state
+    });
+    this.showDialogToUpdateBranchOffice = true;
+  }
+
+  isNotValidField( field: string ): boolean | null {
+    return this.validatorsService.isNotValidField( this.editForm, field );
+  }
+
+  getFieldError( field: string ): string | null {
+    return this.validatorsService.getMessageError( this.editForm, field );
+  }
+
+  saveBranchOffice(): void {
+
+    if ( this.editForm.invalid ) {
+      this.editForm.markAllAsTouched();
+      return;
+    };
+
+    const branchOfficeId = this.editForm.value.idBranch;
+    const body = {
+      name: this.editForm.value.name,
+      email: this.editForm.value.email,
+      address: this.editForm.value.address,
+      state: this.editForm.value.state,
+      companyId: this.editForm.value.idCompany
+    }
+    this.branchOfficeService.updateBranchoffice('/update', branchOfficeId, body).pipe(
+      tap({
+        next: (resp) => {
+          console.log(resp);
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Branch updated successfully' });
+          this.loadBranchOffices();
+          this.editForm.reset({
+            name: '',
+            email: '',
+            address: ''
+          });
+        },
+        error: (error) => {
+          console.log(error);
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.error });
+        }
+      })
+    ).subscribe();
+
+    this.showDialogToUpdateBranchOffice = false;
+  }
 
 
   confirmDelete(id: number): void {
@@ -66,4 +142,10 @@ export class ShowBranchofficeComponent implements OnInit {
 
   }
 
+  updateBranchOffice() {
+    this.showDialogToUpdateBranchOffice = true;
+  }
+
 }
+
+

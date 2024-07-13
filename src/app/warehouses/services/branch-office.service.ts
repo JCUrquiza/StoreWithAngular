@@ -47,7 +47,9 @@ export class BranchOfficeService {
     return this.http.get<BranchOfficeResponse>( this.apiURL + url );
   }
 
-  updateBranchoffice() {}
+  updateBranchoffice(url: string, id: number, body: any) {
+    return this.http.put(`${this.apiURL}${url}/${id}`, body);
+  }
 
   deleteBranchOffice(url: string, id: number) {
     return this.http.delete(`${this.apiURL}${url}/${id}`);

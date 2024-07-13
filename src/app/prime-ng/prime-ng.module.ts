@@ -13,6 +13,8 @@ import { RippleModule } from 'primeng/ripple';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 
+import { DialogModule } from 'primeng/dialog';
+
 
 @NgModule({
   exports: [
@@ -28,6 +30,8 @@ import { ToastModule } from 'primeng/toast';
     RippleModule,
     TableModule,
     ToastModule,
+
+    DialogModule
   ],
   providers: [
     ConfirmationService,

@@ -1,50 +1,52 @@
 <div class="card">
   <p-toast />
   <p-table [value]="branchesOffices" [tableStyle]="{ 'min-width': '50rem' }">
-      <ng-template pTemplate="header">
-          <tr>
-              <th>Company</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Address</th>
-              <th>State</th>
-              <th style="width: 5rem"></th>
-              <th style="width: 5rem"></th>
-          </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-branchOffice>
-          <tr>
-              <td>{{ branchOffice.company.name }}</td>
-              <td>{{ branchOffice.name }}</td>
-              <td>{{ branchOffice.email }}</td>
-              <td>{{ branchOffice.address }}</td>
-              <td>{{ branchOffice.state }}</td>
-              <td>
-                <button
-                    type="button"
-                    pButton
-                    pRipple
-                    icon="pi pi-pen-to-square"
-                  >
-                </button>
-              </td>
-              <td>
-                <button
-                    type="button"
-                    pButton
-                    pRipple
-                    style="background-color: rgb(248, 62, 62);"
-                    icon="pi pi-trash"
-                    (click)="confirmDelete(branchOffice.id)"
-                  >
-                </button>
-              </td>
-          </tr>
-      </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Company</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>State</th>
+        <th style="width: 5rem"></th>
+        <th style="width: 5rem"></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-branchOffice>
+      <tr>
+        <td>{{ branchOffice.company.name }}</td>
+        <td>{{ branchOffice.name }}</td>
+        <td>{{ branchOffice.email }}</td>
+        <td>{{ branchOffice.address }}</td>
+        <td>{{ branchOffice.state }}</td>
+        <td>
+          <button
+            type="button"
+            pButton
+            pRipple
+            icon="pi pi-pen-to-square"
+            (click)="openEditDialog(branchOffice)"
+          >
+          </button>
+        </td>
+        <td>
+          <button
+            type="button"
+            pButton
+            pRipple
+            style="background-color: rgb(248, 62, 62);"
+            icon="pi pi-trash"
+            (click)="confirmDelete(branchOffice.id)"
+          >
+          </button>
+        </td>
+      </tr>
+    </ng-template>
   </p-table>
 
-
-
+  <!-- ========================================================== -->
+  <!-- ===== Dialog para aceptar/rechazar eliminar elemento ===== -->
+  <!-- ========================================================== -->
   <p-toast />
   <p-confirmDialog #cd>
     <ng-template pTemplate="headless" let-message>
@@ -73,7 +75,86 @@
       </div>
     </ng-template>
   </p-confirmDialog>
+  <!-- ========================================================== -->
+  <!-- ===== Dialog para aceptar/rechazar eliminar elemento ===== -->
+  <!-- ========================================================== -->
 
+
+  <!-- =========================================== -->
+  <!-- ===== Dialog para actualizar elemento ===== -->
+  <!-- =========================================== -->
+  <p-dialog header="Edit branch" [modal]="true" [(visible)]="showDialogToUpdateBranchOffice" [style]="{ width: '25rem' }">
+
+    <form autocomplete="off" [formGroup]="editForm" (ngSubmit)="saveBranchOffice()">
+
+      <span class="p-text-secondary block mb-5">Enter the new information.</span>
+
+      <div class="flex align-items-center gap-3 mb-5">
+
+        <label for="username" class="font-semibold w-6rem">Name</label>
+        <div class="flex flex-column">
+          <input pInputText id="username" class="flex-auto" formControlName="name" />
+          <small
+            *ngIf="isNotValidField('name')"
+            style="color: red; padding-top: 6px;"
+          >
+            {{ getFieldError('name') }}
+          </small>
+        </div>
+
+      </div>
+
+
+      <div class="flex align-items-center gap-3 mb-5">
+        <label for="email" class="font-semibold w-6rem">Email</label>
+        <div class="flex flex-column">
+          <input pInputText id="email" class="flex-auto" formControlName="email" />
+          <small
+            *ngIf="isNotValidField('email')"
+            style="color: red; padding-top: 6px;"
+          >
+            {{ getFieldError('email') }}
+          </small>
+        </div>
+      </div>
+
+      <div class="flex align-items-center gap-3 mb-5">
+        <label for="address" class="font-semibold w-6rem">Address</label>
+        <div class="flex flex-column">
+          <input pInputText id="address" class="flex-auto" formControlName="address" />
+          <small
+            *ngIf="isNotValidField('address')"
+            style="color: red; padding-top: 6px;"
+          >
+            {{ getFieldError('address') }}
+          </small>
+        </div>
+      </div>
+
+      <div class="flex align-items-center gap-3 mb-5">
+        <label for="state" class="font-semibold w-6rem">State</label>
+        <div class="flex flex-column">
+          <input pInputText id="state" class="flex-auto" formControlName="state" />
+          <small
+            *ngIf="isNotValidField('state')"
+            style="color: red; padding-top: 6px;"
+          >
+            {{ getFieldError('state') }}
+          </small>
+        </div>
+      </div>
+
+      <div class="flex justify-content-end gap-2">
+        <p-button label="Cancel" severity="secondary" (onClick)="showDialogToUpdateBranchOffice = false" />
+        <p-button label="Save" type="submit" />
+      </div>
+
+    </form>
+
+  </p-dialog>
+  <!-- =========================================== -->
+  <!-- ===== Dialog para actualizar elemento ===== -->
+  <!-- =========================================== -->
 
 
 </div>
