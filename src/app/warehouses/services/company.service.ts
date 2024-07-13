@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { CompanyResponse, UpdateCompanyResponse } from '../interfaces';
+import { Observable, tap } from 'rxjs';
+import { Company, CompanyResponse, UpdateCompanyResponse } from '../interfaces';
 
 
 @Injectable({
@@ -11,10 +11,16 @@ export class CompanyService {
 
   private apiURL = 'http://localhost:3000/api/company';
 
+  public companiesSaved: Company[] = [];
+
   constructor( private http: HttpClient ) {}
 
   getCompanies(api: string): Observable<CompanyResponse> {
-    return this.http.get<CompanyResponse>(this.apiURL + api);
+    return this.http.get<CompanyResponse>(this.apiURL + api).pipe(
+      tap( response => {
+        this.companiesSaved = response.company.map( c => ({ id: c.id, name: c.name, email: c.email, address: c.address }));
+      })
+    );
   }
 
   createCompany(api: string, body: any): Observable<any> {

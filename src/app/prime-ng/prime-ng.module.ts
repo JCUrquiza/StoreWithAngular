@@ -9,6 +9,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { MenuModule } from 'primeng/menu';
 import { PanelModule } from 'primeng/panel';
 import { ToastModule } from 'primeng/toast';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { ToastModule } from 'primeng/toast';
     MenuModule,
     PanelModule,
     ToastModule,
+    DropdownModule,
   ],
   providers: [
     ConfirmationService,

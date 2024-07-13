@@ -1,1 +1,108 @@
-<p>create-branchoffice works!</p>
+<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="saveBranchOffice()">
+
+  <div class="flex flex-column gap-2 px-3">
+
+    <div class="grid">
+
+      <div class="flex flex-column col-12 md:col-3">
+        <label for="name">Name</label>
+        <input
+          pInputText
+          id="name"
+          aria-describedby="address-help"
+          formControlName="name"
+        />
+        <small
+          *ngIf="isNotValidField('name')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('name') }}
+        </small>
+      </div>
+
+      <div class="flex flex-column col-12 md:col-3">
+        <label for="address">Address</label>
+        <input
+          pInputText
+          id="address"
+          aria-describedby="address-help"
+          formControlName="address"
+        />
+        <small
+          *ngIf="isNotValidField('address')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('address') }}
+        </small>
+      </div>
+
+      <div class="flex flex-column col-12 md:col-3">
+        <label for="email">Email</label>
+        <input
+          pInputText
+          id="email"
+          aria-describedby="address-help"
+          formControlName="email"
+        />
+        <small
+          *ngIf="isNotValidField('email')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('email') }}
+        </small>
+      </div>
+
+      <div class="flex flex-column col-12 md:col-3">
+        <label for="state">State</label>
+        <input
+          pInputText
+          id="state"
+          aria-describedby="address-help"
+          formControlName="state"
+        />
+        <small
+          *ngIf="isNotValidField('state')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('state') }}
+        </small>
+      </div>
+
+      <div class="flex flex-column col-12 md:col-3">
+        <label for="companyId">Company</label>
+        <p-dropdown
+          [options]="companies"
+          placeholder="Select a company"
+          formControlName="companyId"
+          optionLabel="name"
+        />
+        <small
+          *ngIf="isNotValidField('companyId')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('companyId') }}
+        </small>
+      </div>
+
+      <div class="flex flex-column col-12 md:col-3">
+        <p-button
+          class="flex justify-content-center pt-3"
+          label="Enviar"
+          type="submit"
+          pRipple
+        />
+      </div>
+
+    </div>
+
+  </div>
+
+</form>
+
+<p-toast
+  [showTransformOptions]="'translateY(100%)'"
+  [showTransitionOptions]="'1000ms'"
+  [hideTransitionOptions]="'1000ms'"
+  [hideTransformOptions]="'translateX(100%)'"
+></p-toast>
+

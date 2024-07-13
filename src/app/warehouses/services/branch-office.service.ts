@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,12 +6,16 @@ import { Injectable } from '@angular/core';
 })
 export class BranchOfficeService {
 
+  private apiURL = 'http://localhost:3000/api/branchesOffices';
+
   public componentBranchOfficeState = {
     create: false,
     read: false,
   }
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   showActionOfCrud(action: string) {
 
@@ -29,6 +34,11 @@ export class BranchOfficeService {
     }
 
     return this.componentBranchOfficeState;
+  }
+
+
+  createBranchOffice(url: string, body: any) {
+    return this.http.post( this.apiURL + url, body );
   }
 
 }
