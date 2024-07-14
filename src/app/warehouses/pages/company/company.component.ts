@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { WarehousesService } from '../../services/warehouses.service';
+import { CompanyService } from '../../services/company.service';
 
 @Component({
   selector: 'app-company',
@@ -14,11 +14,11 @@ export class CompanyComponent {
   };
 
   constructor(
-    private warehousesService: WarehousesService
+    private companyService: CompanyService
   ) {}
 
   selectAction(action: string) {
-    this.actionOfCrudFromService = this.warehousesService.showActionOFCrud(action);
+    this.actionOfCrudFromService = this.companyService.showActionOFCrudCompany(action);
   }
 
 }

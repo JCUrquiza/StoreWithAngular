@@ -1,1 +1,48 @@
-<p>create-warehouses works!</p>
+<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="sendForm()">
+
+  <div class="flex flex-column gap-2 px-3">
+
+    <div class="grid">
+
+      <div class="flex flex-column col-12 md:col-3">
+        <label for="name">Name</label>
+        <input
+          pInputText
+          id="name"
+          formControlName="name"
+        />
+        <small
+          *ngIf="isNotValidField('name')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('name') }}
+        </small>
+      </div>
+
+      <div class="flex flex-column col-12 md:col-3">
+
+        <button
+          class="flex justify-content-center mt-3"
+          type="submit"
+          pButton
+          pRipple
+        >
+          Save
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</form>
+
+
+<p-toast
+  [showTransformOptions]="'translateY(100%)'"
+  [showTransitionOptions]="'1000ms'"
+  [hideTransitionOptions]="'1000ms'"
+  [hideTransformOptions]="'translateX(100%)'"
+></p-toast>
+

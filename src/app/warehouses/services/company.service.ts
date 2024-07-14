@@ -11,9 +11,35 @@ export class CompanyService {
 
   private apiURL = 'http://localhost:3000/api/v1/company';
 
+  public componentCompanyState = {
+    create: false,
+    read: false,
+  };
+
   public companiesSaved: Company[] = [];
 
   constructor( private http: HttpClient ) {}
+
+
+  showActionOFCrudCompany(action: string) {
+
+    this.componentCompanyState.create = false;
+    this.componentCompanyState.read = false;
+
+    switch (action) {
+      case 'create':
+        this.componentCompanyState.create = true;
+        break;
+      case 'read':
+        this.componentCompanyState.read = true;
+        break;
+      default:
+        break;
+    }
+
+    return this.componentCompanyState;
+  }
+
 
   getCompanies(api: string): Observable<CompanyResponse> {
     return this.http.get<CompanyResponse>(this.apiURL + api).pipe(

@@ -14,6 +14,7 @@
         class="flex justify-content-center"
         label="Add"
         severity="success"
+        (onClick)="selectAction('create')"
       />
     </p-card>
   </div>
@@ -24,8 +25,17 @@
         class="flex justify-content-center"
         label="Show"
         severity="info"
+        (onClick)="selectAction('read')"
       />
     </p-card>
+  </div>
+
+  <div class="col-12 md:col-12">
+
+    <create-warehouses *ngIf="actionOfCrudFromService.create" />
+
+    <show-warehouses *ngIf="actionOfCrudFromService.read" />
+
   </div>
 
 </div>
