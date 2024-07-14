@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ProductFamilyResponse } from '../interfaces';
+import { ProductFamilyResponse, ProductResponse } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +53,19 @@ export class ProductsService {
   createProduct(url: string, body: any): Observable<any> {
     return this.http.post(this.baseURLProduct + url, body);
   }
+
+  getAllProducts(url: string): Observable<ProductResponse> {
+    return this.http.get<ProductResponse>(this.baseURLProduct + url);
+  }
+
+  updateProduct(url: string, id: number, body: any) {
+    return this.http.put(this.baseURLProduct + url + '/' + id, body);
+  }
+
+  deleteProduct(url: string, id: number) {
+    return this.http.delete(this.baseURLProduct + url + '/' + id);
+  }
+
 
 
 }

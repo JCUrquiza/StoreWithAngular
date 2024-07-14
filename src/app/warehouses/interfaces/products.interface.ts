@@ -8,4 +8,22 @@ export interface ProductFamily {
 }
 
 
+export interface ProductResponse {
+  allProducts: Product[];
+}
+
+export interface Product {
+  id:              number;
+  name:            string;
+  salePrice:       string;
+  productFamilyId: number;
+  productFamily:   ProductFamily;
+}
+
+export interface ProductFamily {
+  id:   number;
+  name: string;
+}
+
+
 
