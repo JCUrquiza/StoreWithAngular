@@ -14,6 +14,8 @@ import { ShowWarehousesComponent } from './components/warehouses/show-warehouses
 import { BranchOfficesComponent } from './pages/branch-offices/branch-offices.component';
 import { CreateBranchofficeComponent } from './components/branchOffices/create-branchoffice/create-branchoffice.component';
 import { ShowBranchofficeComponent } from './components/branchOffices/show-branchoffice/show-branchoffice.component';
+import { CreateProductComponent } from './components/products/create-product/create-product.component';
+import { ShowProductComponent } from './components/products/show-product/show-product.component';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { ShowBranchofficeComponent } from './components/branchOffices/show-branc
     BranchOfficesComponent,
     CreateBranchofficeComponent,
     ShowBranchofficeComponent,
+    CreateProductComponent,
+    ShowProductComponent,
   ],
   imports: [
     CommonModule,
