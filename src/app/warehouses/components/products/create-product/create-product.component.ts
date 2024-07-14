@@ -95,14 +95,35 @@ export class CreateProductComponent implements OnInit {
     this.showDialogToCreateProductFamily = false;
   }
 
-  public sendForm(): void {
+  public saveProduct(): void {
 
     if (this.myForm.invalid) {
       this.myForm.markAllAsTouched();
       return;
     }
 
-    console.log( this.myForm.value );
+    const body = {
+      name: this.myForm.value.name,
+      salePrice: this.myForm.value.salePrice,
+      productFamilyId: this.myForm.value.productFamilyId.id
+    }
+    this.productsService.createProduct('/create', body).pipe(
+      tap({
+        next: (resp) => {
+          console.log(resp);
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Product created successfully' });
+          this.myForm.reset({
+            name: '',
+            salePrice: 0,
+            productFamilyId: null
+          });
+        },
+        error: (error) => {
+          console.log(error);
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.error });
+        }
+      })
+    ).subscribe();
 
   }
 

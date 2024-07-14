@@ -8,7 +8,8 @@ import { ProductFamilyResponse } from '../interfaces';
 })
 export class ProductsService {
 
-  private baseURL = 'http://localhost:3000/api/v1/productFamily';
+  private baseURLProductFamily = 'http://localhost:3000/api/v1/productFamily';
+  private baseURLProduct = 'http://localhost:3000/api/v1/product';
 
   public componentProductState = {
     create: false,
@@ -40,12 +41,19 @@ export class ProductsService {
 
 
   getAllProductFamilies(url: string): Observable<ProductFamilyResponse> {
-    return this.http.get<ProductFamilyResponse>(this.baseURL + url);
+    return this.http.get<ProductFamilyResponse>(this.baseURLProductFamily + url);
   }
 
 
   createProductFamily(url: string, body: any): Observable<any> {
-    return this.http.post(this.baseURL + url, body);
+    return this.http.post(this.baseURLProductFamily + url, body);
   }
 
+
+  createProduct(url: string, body: any): Observable<any> {
+    return this.http.post(this.baseURLProduct + url, body);
+  }
+
+
 }
+
