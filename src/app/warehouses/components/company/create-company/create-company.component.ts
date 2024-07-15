@@ -15,9 +15,19 @@ import { tap } from 'rxjs';
 export class CreateCompanyComponent {
 
   public myForm: FormGroup = this.fb.group({
-    name: ['', [ Validators.required, Validators.minLength(5) ]],
-    email: ['', [ Validators.required, Validators.pattern(this.validatorsService.emailPattern) ]],
-    address: ['', [ Validators.required, Validators.minLength(6) ]]
+    name: ['', [
+      Validators.required,
+      Validators.minLength(5), Validators.pattern(this.validatorsService.alphaNumericWithSignsPattern)
+    ]],
+    email: ['', [
+      Validators.required,
+      Validators.pattern(this.validatorsService.emailPattern)
+    ]],
+    address: ['', [
+      Validators.required,
+      Validators.minLength(6),
+      Validators.pattern(this.validatorsService.alphaNumericWithSignsPattern)
+    ]]
   });
 
   constructor(
@@ -74,7 +84,5 @@ export class CreateCompanyComponent {
   }
 
   // TODO: Crear spinner para evitar doble click(personalizar botón)
-  // TODO: Mandar mensaje de creado correctamente
-  // TODO: Validación de formulario
 
 }

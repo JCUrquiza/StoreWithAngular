@@ -21,10 +21,25 @@ interface Company {
 export class CreateBranchofficeComponent implements OnInit {
 
   public myForm: FormGroup = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(4)]],
-    address: ['', [Validators.required, Validators.minLength(6)]],
-    email: ['', [Validators.required, Validators.pattern(this.validatorsService.emailPattern)]],
-    state: ['', [Validators.required, Validators.minLength(4)]],
+    name: ['', [
+      Validators.required,
+      Validators.minLength(4),
+      Validators.pattern(this.validatorsService.alphaNumericWithSignsPattern)
+    ]],
+    address: ['', [
+      Validators.required,
+      Validators.minLength(6),
+      Validators.pattern(this.validatorsService.alphaNumericWithSignsPattern)
+    ]],
+    email: ['', [
+      Validators.required,
+      Validators.pattern(this.validatorsService.emailPattern)
+    ]],
+    state: ['', [
+      Validators.required,
+      Validators.minLength(4),
+      Validators.pattern(this.validatorsService.alphaNumericWithSignsPattern)
+    ]],
     companyId: [null, [Validators.required]]
   });
 

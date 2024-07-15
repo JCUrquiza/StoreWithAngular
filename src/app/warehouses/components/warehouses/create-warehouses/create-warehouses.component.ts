@@ -13,7 +13,11 @@ import { MessageService } from 'primeng/api';
 export class CreateWarehousesComponent {
 
   public myForm: FormGroup = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(4)]]
+    name: ['', [
+      Validators.required,
+      Validators.minLength(4),
+      Validators.pattern(this.validatorsService.alphaNumericWithSignsPattern)
+    ]]
   });
 
   constructor(

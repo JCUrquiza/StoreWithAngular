@@ -27,8 +27,14 @@ export class ShowProductComponent implements OnInit {
   ) {
     this.editForm = this.fb.group({
       id: [null],
-      name: ['', [Validators.required]],
-      salePrice: [0, [Validators.required]]
+      name: ['', [
+        Validators.required,
+        Validators.pattern(this.validatorsService.alphaNumericWithSignsPattern)
+      ]],
+      salePrice: [0, [
+        Validators.required,
+        Validators.pattern(this.validatorsService.numericPattern)
+      ]]
     });
   }
 

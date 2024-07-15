@@ -36,9 +36,20 @@ export class ShowCompanyComponent implements OnInit {
   initializeForms(): void {
     this.companyForms = this.companies.map(company => this.fb.group({
       id: [company.id],
-      name: [company.name, [Validators.required, Validators.minLength(3)]],
-      email: [company.email, [Validators.required, Validators.pattern(this.validatorsService.emailPattern)]],
-      address: [company.address, [Validators.required, Validators.minLength(6)]]
+      name: [company.name, [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.pattern(this.validatorsService.alphaNumericWithSignsPattern)
+      ]],
+      email: [company.email, [
+        Validators.required,
+        Validators.pattern(this.validatorsService.emailPattern)
+      ]],
+      address: [company.address, [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.pattern(this.validatorsService.alphaNumericWithSignsPattern)
+      ]]
     }));
   }
 

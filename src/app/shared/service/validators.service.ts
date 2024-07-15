@@ -7,6 +7,8 @@ export class ValidatorsService {
 
   public firstNameAndLastnamePattern: string = '([a-zA-Z]+) ([a-zA-Z]+)';
   public emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
+  public alphaNumericWithSignsPattern: string = '^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ,.\\s]+$';
+  public numericPattern: string = '^[0-9]+$';
 
   public isNotValidField ( form: FormGroup, field: string ) {
     return form.controls[field].errors && form.controls[field].touched;
@@ -24,11 +26,21 @@ export class ValidatorsService {
         case 'minlength':
           return `Mínimo ${ errors['minlength'].requiredLength } caracteres.`;
         case 'pattern':
-          return 'Email no válido'
+          return this.getPatternErrorMessage(field);
       }
     }
 
     return null;
+  }
+
+  private getPatternErrorMessage(field: string): string {
+    const patternMessages: { [key: string]: string } = {
+      name: 'Solo se permiten letras, números, acentos, comas, puntos y espacios.',
+      email: 'Email no válido',
+      address: 'Solo se permiten letras, números, acentos, comas, puntos y espacios.',
+    };
+
+    return patternMessages[field] || 'Formato no válido';
   }
 
 }

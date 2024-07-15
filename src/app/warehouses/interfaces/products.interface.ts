@@ -16,7 +16,6 @@ export interface Product {
   id:              number;
   name:            string;
   salePrice:       string;
-  productFamilyId: number;
   productFamily:   ProductFamily;
 }
 

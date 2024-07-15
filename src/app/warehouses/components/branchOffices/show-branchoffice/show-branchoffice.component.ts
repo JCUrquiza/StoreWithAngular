@@ -32,10 +32,25 @@ export class ShowBranchofficeComponent implements OnInit {
     this.editForm = this.fb.group({
       idCompany: [null],
       idBranch: [null],
-      name: ['', [Validators.required, Validators.minLength(4)]],
-      address: ['', [Validators.required, Validators.minLength(6)]],
-      email: ['', [Validators.required, Validators.pattern(this.validatorsService.emailPattern)]],
-      state: ['', [Validators.required, Validators.minLength(4)]]
+      name: ['', [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.pattern(this.validatorsService.alphaNumericWithSignsPattern)
+      ]],
+      address: ['', [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.pattern(this.validatorsService.alphaNumericWithSignsPattern)
+      ]],
+      email: ['', [
+        Validators.required,
+        Validators.pattern(this.validatorsService.emailPattern)
+      ]],
+      state: ['', [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.pattern(this.validatorsService.alphaNumericWithSignsPattern)
+      ]]
     });
   }
 

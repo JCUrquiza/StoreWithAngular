@@ -17,8 +17,13 @@ export class CreateProductComponent implements OnInit {
   public showDialogToCreateProductFamily: boolean = false;
 
   public myForm: FormGroup = this.fb.group({
-    name: ['', [Validators.required]],
-    salePrice: [0, [Validators.required]],
+    name: ['', [
+      Validators.required,
+      Validators.pattern(this.validatorsService.alphaNumericWithSignsPattern)
+    ]],
+    salePrice: [0, [
+      Validators.required, Validators.pattern(this.validatorsService.numericPattern)
+    ]],
     productFamilyId: [null, [Validators.required]]
   });
 
