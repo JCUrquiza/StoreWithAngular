@@ -1,45 +1,85 @@
 <div class="card">
 
+  <h4 class="mt-5">Select:</h4>
+
+  <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="sendFormToConsultProducts()">
+
+    <div class="grid">
+
+      <div class="flex flex-column col-12 md:col-4">
+        <label for="branchOfficeId" class="font-semibold w-6rem">BranchOffice</label>
+        <div class="flex flex-column">
+          <p-dropdown
+            [options]="branchOffices"
+            placeholder="Select a branchOffice"
+            optionLabel="name"
+            formControlName="branchOfficeId"
+          />
+          <small
+            *ngIf="isNotValidField('branchOfficeId')"
+            style="color: red; padding-top: 10px;"
+          >
+            {{ getFieldError('branchOfficeId') }}
+          </small>
+        </div>
+      </div>
+
+      <div class="flex flex-column col-12 md:col-4">
+        <label for="warehouseId" class="font-semibold w-6rem">Warehouse</label>
+        <div class="flex flex-column">
+          <p-dropdown
+            [options]="warehouses"
+            placeholder="Select a warehouse"
+            optionLabel="name"
+            formControlName="warehouseId"
+          />
+          <small
+            *ngIf="isNotValidField('warehouseId')"
+            style="color: red; padding-top: 10px;"
+          >
+            {{ getFieldError('warehouseId') }}
+          </small>
+        </div>
+      </div>
+
+      <div class="flex flex-column col-12 md:col-2 mt-3">
+
+        <button
+          class="p-button-centered"
+          type="submit"
+          pButton
+          pRipple
+        >
+          Send
+        </button>
+
+      </div>
+
+    </div>
+
+  </form>
+
+
   <p-toast />
-  <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
-    <ng-template pTemplate="header">
-      <tr>
-        <th>Family</th>
-        <th>Name</th>
-        <th>Sale Price</th>
-        <th style="width: 5rem"></th>
-        <th style="width: 5rem"></th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-product>
-      <tr>
-        <td>{{ product.productFamily.name }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.salePrice }}</td>
-        <td>
-          <button
-            type="button"
-            pButton
-            pRipple
-            icon="pi pi-pen-to-square"
-            >
-            <!-- (click)="openEditDialog(product)" -->
-          </button>
-        </td>
-        <td>
-          <button
-            type="button"
-            pButton
-            pRipple
-            style="background-color: rgb(248, 62, 62);"
-            icon="pi pi-trash"
-            >
-            <!-- (click)="confirmDelete(product.id)" -->
-          </button>
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
+  <div *ngIf="showTableProducts">
+    <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Family</th>
+          <th>Name</th>
+          <th>Quantity</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+        <tr>
+          <td>{{ product.product.productFamily.name }}</td>
+          <td>{{ product.product.name }}</td>
+          <td>{{ product.quantity }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
 
 </div>
 
