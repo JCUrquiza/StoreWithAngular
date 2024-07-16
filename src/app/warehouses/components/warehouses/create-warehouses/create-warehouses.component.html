@@ -46,7 +46,6 @@
 
   <h4>Assign product to warehouse</h4>
 
-  <p-toast />
   <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header">
       <tr>
@@ -128,7 +127,8 @@
         <div class="flex flex-column">
           <input
             class="flex-auto"
-            pInputText id="quantity"
+            pInputText
+            id="quantity"
             formControlName="quantity"
           />
           <small
@@ -142,8 +142,14 @@
 
       <div class="flex justify-content-end gap-2">
         <p-button label="Cancel" severity="secondary" (onClick)="showDialogToAssignProduct = false" />
-        <p-button label="Save" type="submit" />
+        <button type="submit"
+          pButton
+          pRipple
+        >
+          Save
+        </button>
       </div>
+      <!-- <p-button label="Save" type="submit" /> -->
 
     </form>
 

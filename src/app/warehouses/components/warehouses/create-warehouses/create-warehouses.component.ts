@@ -34,7 +34,7 @@ export class CreateWarehousesComponent implements OnInit {
     branchOfficeId: ['', [Validators.required]],
     warehouseId: ['', [Validators.required]],
     productId: ['', [Validators.required]],
-    quantity: ['', [Validators.required]],
+    quantity: [0, [Validators.required, Validators.pattern(this.validatorsService.numericPattern)]],
   });
 
   constructor(
@@ -54,7 +54,6 @@ export class CreateWarehousesComponent implements OnInit {
   public loadBranchOffice() {
     this.branchOfficeService.getAll('/getAll')
       .subscribe( resp => {
-        console.log(resp);
         this.branchOffices = resp.branchesOffices;
       });
   }
@@ -62,7 +61,6 @@ export class CreateWarehousesComponent implements OnInit {
   public loadWarehouses() {
     this.warehousesService.getWarehouses('/getAll')
       .subscribe( resp => {
-        console.log(resp);
         this.warehouses = resp.warehouses;
       });
   }
@@ -70,7 +68,6 @@ export class CreateWarehousesComponent implements OnInit {
   public loadProducts() {
     this.productsService.getAllProducts('/getAll')
       .subscribe( resp => {
-        console.log(resp);
         this.products = resp.allProducts;
       });
   }
@@ -116,13 +113,11 @@ export class CreateWarehousesComponent implements OnInit {
         }
       })
     ).subscribe();
-
   }
 
 
 
   public openEditDialog(product: Product) {
-    console.log(product);
 
     // Si ya fue tocado, que se conserve el valor
     let branchOfficeValue = '';
@@ -138,7 +133,7 @@ export class CreateWarehousesComponent implements OnInit {
       branchOfficeId: branchOfficeValue,
       warehouseId: warehouseValue,
       productId: product.id,
-      quantity: '',
+      quantity: 0,
     });
     this.loadBranchOffice();
     this.loadWarehouses();
@@ -156,16 +151,17 @@ export class CreateWarehousesComponent implements OnInit {
       branchOfficeId: this.myFormProduct.value.branchOfficeId.id,
       warehouseId: this.myFormProduct.value.warehouseId.id,
       productId: this.myFormProduct.value.productId,
-      quantity: this.myFormProduct.value.quantity
+      quantity: +this.myFormProduct.value.quantity
     }
-
     this.productsInWarehousesService.saveProductInWarehouse('/create', body).pipe(
       tap({
         next: (resp) => {
           console.log(resp);
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Product created successfully' });
         },
         error: (error) => {
           console.log(error);
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.error });
         }
       })
     ).subscribe();
@@ -173,3 +169,5 @@ export class CreateWarehousesComponent implements OnInit {
   }
 
 }
+
+
