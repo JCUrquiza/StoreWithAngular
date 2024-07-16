@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Company } from '../interfaces';
+import { Company, WarehousesResponse } from '../interfaces';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -46,6 +46,10 @@ export class WarehousesService {
 
   getCompanySavedInLocal() {
     return this.companySaved;
+  }
+
+  getWarehouses(url: string): Observable<WarehousesResponse> {
+    return this.http.get<WarehousesResponse>(this.baseURL + url);
   }
 
   createWarehouse(url: string, body: any): Observable<any> {
