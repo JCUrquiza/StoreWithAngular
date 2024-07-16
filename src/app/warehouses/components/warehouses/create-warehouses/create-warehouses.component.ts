@@ -121,10 +121,20 @@ export class CreateWarehousesComponent implements OnInit {
 
   public openEditDialog(product: Product) {
     console.log(product);
-    // console.log(product);
+
+    // Si ya fue tocado, que se conserve el valor
+    let branchOfficeValue = '';
+    if ( this.myFormProduct.get('branchOfficeId')!.touched ) {
+      branchOfficeValue = this.myFormProduct.value.branchOfficeId;
+    }
+    let warehouseValue = '';
+    if ( this.myFormProduct.get('warehouseId')!.touched ) {
+      warehouseValue = this.myFormProduct.value.warehouseId;
+    }
+
     this.myFormProduct.patchValue({
-      branchOfficeId: '',
-      warehouseId: '',
+      branchOfficeId: branchOfficeValue,
+      warehouseId: warehouseValue,
       productId: product.id,
       quantity: '',
     });
