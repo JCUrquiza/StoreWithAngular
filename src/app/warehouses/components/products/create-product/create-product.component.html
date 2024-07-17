@@ -4,7 +4,7 @@
 
     <div class="grid">
 
-      <div class="flex flex-column col-12 md:col-3">
+      <div class="flex flex-column col-12 md:col-2">
         <label for="name">Name</label>
         <input
           pInputText
@@ -16,6 +16,21 @@
           style="color: red; padding-top: 10px;"
         >
           {{ getFieldError('name') }}
+        </small>
+      </div>
+
+      <div class="flex flex-column col-12 md:col-2">
+        <label for="codigoSKU">Código SKU</label>
+        <input
+          pInputText
+          id="codigoSKU"
+          formControlName="codigoSKU"
+        />
+        <small
+          *ngIf="isNotValidField('codigoSKU')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('codigoSKU') }}
         </small>
       </div>
 

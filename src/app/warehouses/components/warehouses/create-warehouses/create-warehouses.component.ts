@@ -166,6 +166,7 @@ export class CreateWarehousesComponent implements OnInit {
       })
     ).subscribe();
 
+    this.showDialogToAssignProduct = false;
   }
 
 }

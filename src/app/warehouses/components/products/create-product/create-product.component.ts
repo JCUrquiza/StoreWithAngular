@@ -21,6 +21,10 @@ export class CreateProductComponent implements OnInit {
       Validators.required,
       Validators.pattern(this.validatorsService.alphaNumericWithSignsPattern)
     ]],
+    codigoSKU: ['', [
+      Validators.required,
+      Validators.pattern(this.validatorsService.alphaNumericWithSignsPattern)
+    ]],
     salePrice: [0, [
       Validators.required, Validators.pattern(this.validatorsService.numericPattern)
     ]],
@@ -109,9 +113,11 @@ export class CreateProductComponent implements OnInit {
 
     const body = {
       name: this.myForm.value.name,
+      codigoSKU: this.myForm.value.codigoSKU,
       salePrice: this.myForm.value.salePrice,
       productFamilyId: this.myForm.value.productFamilyId.id
     }
+    console.log(body);
     this.productsService.createProduct('/create', body).pipe(
       tap({
         next: (resp) => {
@@ -119,6 +125,7 @@ export class CreateProductComponent implements OnInit {
           this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Product created successfully' });
           this.myForm.reset({
             name: '',
+            codigoSKU: '',
             salePrice: 0,
             productFamilyId: null
           });
