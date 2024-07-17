@@ -22,6 +22,10 @@ export class ProductsInWarehousesService {
     return this.http.post<ProductsInWarehousesResponse>(this.apiURL + url, body);
   }
 
+  public updateQuantityOfProduct(url: string, id: number, body: any) {
+    return this.http.put(this.apiURL + url + '/' + id, body);
+  }
+
 }
 
 

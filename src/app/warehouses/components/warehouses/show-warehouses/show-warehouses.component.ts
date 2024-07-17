@@ -24,7 +24,15 @@ export class ShowWarehousesComponent implements OnInit {
     warehouseId: ['', [Validators.required]],
   });
 
+  public myFormProduct: FormGroup = this.fb.group({
+    id: [0],
+    family: [''],
+    name: [''],
+    quantity: [null, [Validators.required, Validators.pattern(this.validatorsService.numericPattern)]],
+  });
+
   public showTableProducts: boolean = false;
+  public showDialogToUpdateProduct: boolean = false;
 
   constructor(
     private branchOfficeService: BranchOfficeService,
@@ -54,11 +62,17 @@ export class ShowWarehousesComponent implements OnInit {
       });
   }
 
-  isNotValidField(field: string) {
+  isNotValidField(field: string, form: string = 'warehouse') {
+    if (form == 'product') {
+      return this.validatorsService.isNotValidField(this.myFormProduct, field);
+    }
     return this.validatorsService.isNotValidField(this.myForm, field);
   }
 
-  getFieldError(field: string) {
+  getFieldError(field: string, form: string = 'warehouse') {
+    if (form == 'product') {
+      return this.validatorsService.getMessageError(this.myForm, field);
+    }
     return this.validatorsService.getMessageError(this.myForm, field);
   }
 
@@ -76,6 +90,7 @@ export class ShowWarehousesComponent implements OnInit {
       tap({
         next: (resp) => {
           console.log(resp);
+          this.products = [];
           this.products = resp.productsInWarehouse;
           this.showTableProducts = true;
         },
@@ -83,6 +98,41 @@ export class ShowWarehousesComponent implements OnInit {
           console.log(error);
           this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.error });
           this.showTableProducts = false;
+        }
+      })
+    ).subscribe();
+
+  }
+
+
+
+  public openEditDialog(product: any) {
+    this.myFormProduct.patchValue({
+      id: product.id,
+      family: product.product.productFamily.name,
+      name: product.product.name,
+      quantity: product.quantity
+    });
+    this.showDialogToUpdateProduct = true;
+  }
+
+  public saveProduct() {
+    const idProductInWarehouse = this.myFormProduct.value.id;
+
+    const body = {
+      quantity: this.myFormProduct.value.quantity
+    }
+    this.productsInWarehousesService.updateQuantityOfProduct('/updateQuantity', idProductInWarehouse, body).pipe(
+      tap({
+        next: (resp) => {
+          console.log(resp);
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Product updated successfully' });
+          this.sendFormToConsultProducts();
+          this.showDialogToUpdateProduct = false;
+        },
+        error: (error) => {
+          console.log(error);
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.error });
         }
       })
     ).subscribe();
