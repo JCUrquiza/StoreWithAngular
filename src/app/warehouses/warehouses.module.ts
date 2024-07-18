@@ -16,6 +16,8 @@ import { CreateBranchofficeComponent } from './components/branchOffices/create-b
 import { ShowBranchofficeComponent } from './components/branchOffices/show-branchoffice/show-branchoffice.component';
 import { CreateProductComponent } from './components/products/create-product/create-product.component';
 import { ShowProductComponent } from './components/products/show-product/show-product.component';
+import { TransferProductsSameBranchComponent } from './components/warehousesMovements/transfer-products-same-branch/transfer-products-same-branch.component';
+import { TransferProductsDifferentBranchesComponent } from './components/warehousesMovements/transfer-products-different-branches/transfer-products-different-branches.component';
 
 
 @NgModule({
@@ -33,6 +35,8 @@ import { ShowProductComponent } from './components/products/show-product/show-pr
     ShowBranchofficeComponent,
     CreateProductComponent,
     ShowProductComponent,
+    TransferProductsSameBranchComponent,
+    TransferProductsDifferentBranchesComponent,
   ],
   imports: [
     CommonModule,

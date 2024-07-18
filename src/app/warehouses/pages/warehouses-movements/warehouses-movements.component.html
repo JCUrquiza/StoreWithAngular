@@ -7,33 +7,39 @@
 
 <div class="grid mt-2">
 
-  <div class="col-12 md:col-3">
+  <div class="flex justify-content-center col-12 md:col-3">
     <p-card>
+      <p>
+        Send products between warehouses of the same branch.
+      </p>
       <p-button
         class="flex justify-content-center"
-        label="Add"
-        severity="success"
-        />
-        <!-- (onClick)="selectAction('create')" -->
+        label="Show"
+        severity="info"
+        (onClick)="selectAction('create')"
+      />
     </p-card>
   </div>
 
   <div class="col-12 md:col-3">
     <p-card>
+      <p>
+        Send products between warehouses of different branches.
+      </p>
       <p-button
         class="flex justify-content-center"
         label="Show"
         severity="info"
-        />
-        <!-- (onClick)="selectAction('read')" -->
+        (onClick)="selectAction('read')"
+      />
     </p-card>
   </div>
 
   <div class="col-12 md:col-12">
 
-    <!-- <create-product *ngIf="actionOfCrudFromService.create" /> -->
+    <transfer-products-same-branch *ngIf="actionOfCrudFromService.create" />
 
-    <!-- <show-product *ngIf="actionOfCrudFromService.read" /> -->
+    <transfer-products-different-branches *ngIf="actionOfCrudFromService.read" />
 
   </div>
 

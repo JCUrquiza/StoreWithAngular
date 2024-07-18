@@ -1,0 +1,112 @@
+<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="saveForm()">
+
+  <div class="flex flex-column gap-2 px-3">
+
+    <div class="grid">
+
+      <div class="flex flex-column col-12 md:col-3">
+        <label for="branchOfficeId">Branch Office</label>
+        <p-dropdown
+          [options]="branchOfficess"
+          placeholder="Select a branch office"
+          formControlName="branchOfficeId"
+          optionLabel="name"
+        />
+        <small
+          *ngIf="isNotValidField('branchOfficeId')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('branchOfficeId') }}
+        </small>
+      </div>
+
+      <div class="flex flex-column col-12 md:col-3">
+        <label for="warehouseSourceId">Warehouse Source</label>
+        <p-dropdown
+          [options]="warehouses"
+          placeholder="Select a company"
+          formControlName="warehouseSourceId"
+          optionLabel="name"
+        />
+        <small
+          *ngIf="isNotValidField('warehouseSourceId')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('warehouseSourceId') }}
+        </small>
+      </div>
+
+      <div class="flex flex-column col-12 md:col-3">
+        <label for="warehouseTargetId">Warehouse Target</label>
+        <p-dropdown
+          [options]="warehouses"
+          placeholder="Select a company"
+          formControlName="warehouseTargetId"
+          optionLabel="name"
+        />
+        <small
+          *ngIf="isNotValidField('warehouseTargetId')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('warehouseTargetId') }}
+        </small>
+      </div>
+
+      <div class="flex flex-column col-12 md:col-3 pt-4">
+
+        <button
+          class="flex justify-content-center pt-3"
+          type="submit"
+          pButton
+          pRipple
+        >
+          Send
+        </button>
+
+        <!-- <p-button
+          class="flex justify-content-center pt-3"
+          label="Send"
+          type="submit"
+          pRipple
+        /> -->
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+  <p-toast />
+  <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Family</th>
+        <th>Name</th>
+        <th>SKU</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+      <tr>
+        <td>{{ product.productFamily.name }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.codigoSKU }}</td>
+        <!-- <td>
+          <button
+            type="button"
+            pButton
+            pRipple
+            icon="pi pi-pen-to-square"
+            (click)="openEditDialog(product)"
+            >
+          </button>
+        </td> -->
+      </tr>
+    </ng-template>
+  </p-table>
+
+</form>
+
