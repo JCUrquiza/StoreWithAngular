@@ -1,10 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { WarehousesService } from '../../../services/warehouses.service';
 import { BranchesOffice, Product, Warehouse } from '../../../interfaces';
 import { BranchOfficeService } from '../../../services/branch-office.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductsService } from '../../../services/products.service';
 import { ValidatorsService } from '../../../../shared/service/validators.service';
+
+interface ProductsSelected {
+  id: number,
+  familyName: string,
+  codigoSKU: string,
+  name: string,
+  quantity: number
+}
 
 @Component({
   selector: 'transfer-products-same-branch',
@@ -16,12 +24,15 @@ export class TransferProductsSameBranchComponent implements OnInit {
   public branchOfficess: BranchesOffice[] = [];
   public warehouses: Warehouse[] = [];
   public products: Product[] = [];
+  public sProducts: Product[] = [];
+  public selectedProducts: ProductsSelected[] = [];
+
+  public showTableOfProductsSelected: boolean = false;
 
   public myForm: FormGroup = this.fb.group({
     branchOfficeId: ['', [Validators.required]],
     warehouseSourceId: ['', [Validators.required]],
     warehouseTargetId: ['', [Validators.required]],
-    products: [[], [Validators.required]]
   });
 
   constructor(
@@ -70,14 +81,38 @@ export class TransferProductsSameBranchComponent implements OnInit {
     return this.validatorsService.getMessageError(this.myForm, field);
   }
 
-  saveForm() {
+
+  public showProductsSelected(): void {
+    this.showTableOfProductsSelected = false;
+    if ( this.sProducts.length > 0 ) {
+      this.showTableOfProductsSelected = true;
+    }
+
+    this.sProducts.map( product => {
+      this.selectedProducts.push({
+        id: product.id,
+        familyName: product.productFamily.name,
+        codigoSKU: product.codigoSKU,
+        name: product.name,
+        quantity: 0
+      });
+      console.log(product);
+    });
+
+    console.log(this.selectedProducts);
+  }
+
+
+  public saveForm(): void {
 
     if (this.myForm.invalid) {
       this.myForm.markAllAsTouched();
       return;
     }
 
-    console.log( this.myForm.value );
+    console.log(this.selectedProducts);
+
+    console.log(this.myForm);
   }
 
 }

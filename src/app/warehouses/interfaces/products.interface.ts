@@ -36,6 +36,7 @@ export interface Product {
   name:            string;
   salePrice:       string;
   productFamily:   ProductFamily;
+  codigoSKU:       string;
 }
 
 export interface ProductFamily {
