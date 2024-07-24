@@ -8,7 +8,7 @@ import { BranchOfficesComponent } from './pages/branch-offices/branch-offices.co
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'company',
     component: CompanyComponent
   },
   {

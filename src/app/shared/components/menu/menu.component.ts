@@ -16,14 +16,20 @@ export class MenuComponent {
         label: 'Warehouse system',
         icon: 'pi pi-fw pi-warehouse',
         items: [
-          { label: 'Companies', icon: 'pi pi-building-columns', routerLink: '/' },
-          { label: 'Branch offices', icon: 'pi pi-shop', routerLink: '/branch-offices' },
-          { label: 'Warehouses', icon: 'pi pi-inbox', routerLink: 'warehouses' },
-          { label: 'Products', icon: 'pi pi-hammer', routerLink: 'products' },
-          { label: 'Warehouse movements', icon: 'pi pi-arrow-right-arrow-left', routerLink: 'warehouses-movements' },
+          { label: 'Companies', icon: 'pi pi-building-columns', routerLink: '/warehouses/company' },
+          { label: 'Branch offices', icon: 'pi pi-shop', routerLink: '/warehouses/branch-offices' },
+          { label: 'Warehouses', icon: 'pi pi-inbox', routerLink: '/warehouses/warehouses' },
+          { label: 'Products', icon: 'pi pi-hammer', routerLink: '/warehouses/products' },
+          { label: 'Warehouse movements', icon: 'pi pi-arrow-right-arrow-left', routerLink: '/warehouses/warehouses-movements' },
         ]
       },
-      { label: 'Open', icon: 'pi pi-fw pi-download' },
+      {
+        label: 'Open',
+        icon: 'pi pi-fw pi-download',
+        items: [
+          { label: 'Make Ticket', icon: 'pi pi-ticket', routerLink: '/tickets/list' },
+        ]
+      },
       { label: 'Undo', icon: 'pi pi-fw pi-refresh' },
     ]
   }
