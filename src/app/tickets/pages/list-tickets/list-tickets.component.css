@@ -1,0 +1,13 @@
+/* Centrar el texto en las celdas de la tabla */
+.p-table tr th,
+.p-table tr td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Asegurar que los botones estén centrados */
+.p-table tr td button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

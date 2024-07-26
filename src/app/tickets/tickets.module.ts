@@ -8,6 +8,7 @@ import { ListTicketsComponent } from './pages/list-tickets/list-tickets.componen
 
 import { CreateTicketComponent } from './components/create-ticket/create-ticket.component';
 import { DetailTicketsComponent } from './components/detail-tickets/detail-tickets.component';
+import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 
 
 
@@ -20,7 +21,8 @@ import { DetailTicketsComponent } from './components/detail-tickets/detail-ticke
   ],
   imports: [
     CommonModule,
-    TicketsRoutingModule
+    TicketsRoutingModule,
+    PrimeNgModule,
   ]
 })
 export class TicketsModule { }
