@@ -8,7 +8,7 @@ import { TicketsResponse } from '../interfaces/tickets.interface';
 })
 export class TicketsService {
 
-  public apiBase: string = 'http://localhost:3000/api/v1/tickets';
+  private apiBase: string = 'http://localhost:3000/api/v1/tickets';
 
   public actionTickets = {
     list: false,
@@ -46,6 +46,10 @@ export class TicketsService {
 
   getAllTickets(url: string): Observable<TicketsResponse> {
     return this.http.get<TicketsResponse>( this.apiBase + url );
+  }
+
+  attendTicket(url: string, id: number) {
+    return this.http.get( this.apiBase + url + '/' + id );
   }
 
 }

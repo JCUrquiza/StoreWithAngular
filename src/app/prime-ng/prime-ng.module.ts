@@ -12,9 +12,8 @@ import { MenuModule } from 'primeng/menu';
 import { PanelModule } from 'primeng/panel';
 import { RippleModule } from 'primeng/ripple';
 import { TableModule } from 'primeng/table';
-import { ToastModule } from 'primeng/toast';
-
 import { TagModule } from 'primeng/tag';
+import { ToastModule } from 'primeng/toast';
 
 
 @NgModule({
@@ -31,8 +30,8 @@ import { TagModule } from 'primeng/tag';
     PanelModule,
     RippleModule,
     TableModule,
-    ToastModule,
     TagModule,
+    ToastModule,
   ],
   providers: [
     ConfirmationService,
