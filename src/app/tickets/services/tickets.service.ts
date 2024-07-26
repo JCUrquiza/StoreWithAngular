@@ -1,14 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TicketsResponse } from '../interfaces/tickets.interface';
+import { CatalogueResponse, TicketsResponse } from '../interfaces/tickets.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TicketsService {
 
-  private apiBase: string = 'http://localhost:3000/api/v1/tickets';
+  private apiBaseTickets: string = 'http://localhost:3000/api/v1/tickets';
+  private apiBaseCatalogue: string = 'http://localhost:3000/api/v1/catalogue';
 
   public actionTickets = {
     list: false,
@@ -44,12 +45,20 @@ export class TicketsService {
 
   }
 
-  getAllTickets(url: string): Observable<TicketsResponse> {
-    return this.http.get<TicketsResponse>( this.apiBase + url );
+  public getAllTickets(url: string): Observable<TicketsResponse> {
+    return this.http.get<TicketsResponse>( this.apiBaseTickets + url );
   }
 
-  attendTicket(url: string, id: number) {
-    return this.http.get( this.apiBase + url + '/' + id );
+  public getAllCatalogue( url: string ): Observable<CatalogueResponse> {
+    return this.http.get<CatalogueResponse>( this.apiBaseCatalogue + url );
+  }
+
+  public createTicket(url: string, body: any) {
+    return this.http.post( this.apiBaseTickets + url, body );
+  }
+
+  public attendTicket(url: string, id: number) {
+    return this.http.get( this.apiBaseTickets + url + '/' + id );
   }
 
 }

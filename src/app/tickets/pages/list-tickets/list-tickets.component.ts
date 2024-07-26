@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TicketsService } from '../../services/tickets.service';
-import { Ticket } from '../../interfaces/tickets.interface';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Catalogue, Ticket } from '../../interfaces/tickets.interface';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { tap } from 'rxjs';
 import { MessageService } from 'primeng/api';
+import { ValidatorsService } from '../../../shared/service/validators.service';
 
 @Component({
   selector: 'app-list-tickets',
@@ -13,7 +14,10 @@ import { MessageService } from 'primeng/api';
 export class ListTicketsComponent implements OnInit {
 
   public ticketsList: Ticket[] = [];
-  public showDialogTicket: boolean = false;
+  public catalogueList: Catalogue[] = [];
+
+  public showDialogAttendTicket: boolean = false;
+  public showDialogNewTicket: boolean = false;
 
   public actionOfCrudFromService = {
     list: false,
@@ -21,22 +25,27 @@ export class ListTicketsComponent implements OnInit {
     update: false,
   };
 
-  public ticketForm: FormGroup;
+  public newTicketForm: FormGroup = this.fb.group({
+    categoryId: ['', [Validators.required]],
+    description: ['', [Validators.required]]
+  });
+
+  public ticketForm: FormGroup = this.fb.group({
+    id: [''],
+    category: [''],
+    description: ['']
+  });
 
   constructor(
     private ticketsService: TicketsService,
     private fb: FormBuilder,
     private messageService: MessageService,
-  ) {
-    this.ticketForm = this.fb.group({
-      id: [''],
-      category: [''],
-      description: ['']
-    });
-  }
+    private validatorsService: ValidatorsService,
+  ) {}
 
   ngOnInit(): void {
     this.loadTickets();
+    this.loadCatalogue();
   }
 
   public showActions(action: string): void {
@@ -48,6 +57,13 @@ export class ListTicketsComponent implements OnInit {
       .subscribe( resp => {
         this.ticketsList = resp.tickets;
       });
+  }
+
+  loadCatalogue(): void {
+    this.ticketsService.getAllCatalogue('/getAll')
+      .subscribe( resp => {
+        this.catalogueList = resp.catalogue;
+      })
   }
 
   public getSeverity(statusCode: string): 'success' | 'secondary' | 'info' | 'warning' | 'danger' | 'contrast' | undefined {
@@ -63,8 +79,27 @@ export class ListTicketsComponent implements OnInit {
     }
   }
 
+  public createNewTicket() {
+    this.showDialogNewTicket = true;
+  }
+
+  isNotValidField( field: string ) {
+    return this.validatorsService.isNotValidField(this.newTicketForm, field);
+  }
+
+  getFieldError( field: string ) {
+    return this.validatorsService.getMessageError(this.newTicketForm, field);
+  }
+
+
+  public sendNewTicket() {
+    console.log(this.newTicketForm.value);
+    this.showDialogNewTicket = false;
+  }
+
+
   public openDialogTicket(ticket: Ticket) {
-    this.showDialogTicket = true;
+    this.showDialogAttendTicket = true;
     this.ticketForm.patchValue({
       id: ticket.id,
       category: ticket.catalogue.name,
@@ -87,7 +122,7 @@ export class ListTicketsComponent implements OnInit {
       })
     ).subscribe();
 
-    this.showDialogTicket = false;
+    this.showDialogAttendTicket = false;
   }
 
 }

@@ -30,3 +30,15 @@ export interface User {
 }
 
 
+
+export interface CatalogueResponse {
+  catalogue: Catalogue[];
+}
+
+export interface Catalogue {
+  id:     number;
+  name:   string;
+  module: string;
+}
+
+
