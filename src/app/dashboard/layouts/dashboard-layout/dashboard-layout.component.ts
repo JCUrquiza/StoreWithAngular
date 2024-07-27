@@ -12,7 +12,6 @@ export class DashboardLayoutComponent {
 
   // Señales computadas:
   public user = computed( () => this.authService.currentUser() );
-
   // Método tradicional:
   // get user() {
   //   return this.authService.currentUser();
