@@ -21,8 +21,11 @@ export class LoginPageComponent {
     const { email, password } = this.myForm.value;
 
     this.authService.login(email, password)
-      .subscribe( success => {
-        console.log(success);
+      .subscribe({
+        next: () => console.log('Todo bien!!'),
+        error: (error) => {
+          console.log({ loginPage: error });
+        }
       })
 
   }
