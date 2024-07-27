@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 
@@ -11,6 +12,7 @@ export class LoginPageComponent {
 
   private fb = inject( FormBuilder );
   private authService = inject( AuthService );
+  private router = inject( Router );
 
   public myForm: FormGroup = this.fb.group({
     email: [''],
@@ -22,7 +24,7 @@ export class LoginPageComponent {
 
     this.authService.login(email, password)
       .subscribe({
-        next: () => console.log('Todo bien!!'),
+        next: () => this.router.navigateByUrl('/dashboard'),
         error: (error) => {
           console.log({ loginPage: error });
         }
