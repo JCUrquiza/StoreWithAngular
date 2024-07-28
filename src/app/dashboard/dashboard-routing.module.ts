@@ -5,8 +5,19 @@ import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-l
 const routes: Routes = [
   {
     path: '',
-    component: DashboardLayoutComponent
-  }
+    component: DashboardLayoutComponent,
+    children: [
+      {
+        path: 'tickets',
+        loadChildren: () => import('./modules/tickets/tickets.module').then( m => m.TicketsModule )
+      },
+      {
+        path: '',
+        redirectTo: 'tickets',
+        pathMatch: 'full'
+      }
+    ]
+  },
 ];
 
 @NgModule({

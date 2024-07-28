@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'shared-menu',
@@ -9,6 +10,10 @@ import { MenuItem } from 'primeng/api';
 export class MenuComponent {
 
   public menuItems: MenuItem[] = [];
+
+  constructor(
+    public authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.menuItems = [
@@ -27,11 +32,15 @@ export class MenuComponent {
         label: 'Open',
         icon: 'pi pi-fw pi-download',
         items: [
-          { label: 'Make Ticket', icon: 'pi pi-ticket', routerLink: '/tickets/list' },
+          { label: 'Make Ticket', icon: 'pi pi-ticket', routerLink: '/dashboard/tickets/list' },
         ]
       },
       { label: 'Undo', icon: 'pi pi-fw pi-refresh' },
     ]
+  }
+
+  public logout(): void {
+    this.authService.logout();
   }
 
 }
