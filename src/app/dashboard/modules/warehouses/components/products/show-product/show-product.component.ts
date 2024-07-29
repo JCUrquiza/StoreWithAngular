@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../../services/products.service';
 import { Product } from '../../../interfaces';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ValidatorsService } from '../../../../shared/service/validators.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { tap } from 'rxjs';
+import { ValidatorsService } from '../../../../../../shared/service/validators.service';
+
 
 @Component({
   selector: 'show-product',

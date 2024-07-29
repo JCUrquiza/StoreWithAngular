@@ -21,11 +21,15 @@ export class MenuComponent {
         label: 'Warehouse system',
         icon: 'pi pi-fw pi-warehouse',
         items: [
-          { label: 'Companies', icon: 'pi pi-building-columns', routerLink: '/warehouses/company' },
-          { label: 'Branch offices', icon: 'pi pi-shop', routerLink: '/warehouses/branch-offices' },
-          { label: 'Warehouses', icon: 'pi pi-inbox', routerLink: '/warehouses/warehouses' },
-          { label: 'Products', icon: 'pi pi-hammer', routerLink: '/warehouses/products' },
-          { label: 'Warehouse movements', icon: 'pi pi-arrow-right-arrow-left', routerLink: '/warehouses/warehouses-movements' },
+          { label: 'Companies', icon: 'pi pi-building-columns', routerLink: '/dashboard/warehouses/company' },
+          { label: 'Branch offices', icon: 'pi pi-shop', routerLink: '/dashboard/warehouses/branch-offices' },
+          { label: 'Warehouses', icon: 'pi pi-inbox', routerLink: '/dashboard/warehouses/warehouses' },
+          { label: 'Products', icon: 'pi pi-hammer', routerLink: '/dashboard/warehouses/products' },
+          {
+            label: 'Warehouse movements',
+            icon: 'pi pi-arrow-right-arrow-left',
+            routerLink: '/dashboard/warehouses/warehouses-movements'
+          },
         ]
       },
       {

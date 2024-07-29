@@ -4,7 +4,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { tap } from 'rxjs';
 import { BranchOfficeService } from '../../../services/branch-office.service';
 import { BranchesOffice } from '../../../interfaces';
-import { ValidatorsService } from '../../../../shared/service/validators.service';
+import { ValidatorsService } from '../../../../../../shared/service/validators.service';
 
 
 @Component({

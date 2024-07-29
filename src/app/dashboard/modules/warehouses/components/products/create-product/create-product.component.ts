@@ -4,7 +4,8 @@ import { MessageService } from 'primeng/api';
 import { tap } from 'rxjs';
 import { ProductsService } from '../../../services/products.service';
 import { ProductFamily } from '../../../interfaces';
-import { ValidatorsService } from '../../../../shared/service/validators.service';
+import { ValidatorsService } from '../../../../../../shared/service/validators.service';
+
 
 @Component({
   selector: 'create-product',

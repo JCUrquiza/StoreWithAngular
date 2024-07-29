@@ -5,8 +5,9 @@ import { tap } from 'rxjs';
 import { BranchesOffice, ProductsInWarehouse, Warehouse } from '../../../interfaces';
 import { BranchOfficeService } from '../../../services/branch-office.service';
 import { WarehousesService } from '../../../services/warehouses.service';
-import { ValidatorsService } from '../../../../shared/service/validators.service';
 import { ProductsInWarehousesService } from '../../../services/products-in-warehouses.service';
+import { ValidatorsService } from '../../../../../../shared/service/validators.service';
+
 
 @Component({
   selector: 'show-warehouses',

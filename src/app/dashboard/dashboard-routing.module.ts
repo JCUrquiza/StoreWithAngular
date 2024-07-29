@@ -8,6 +8,10 @@ const routes: Routes = [
     component: DashboardLayoutComponent,
     children: [
       {
+        path: 'warehouses',
+        loadChildren: () => import('./modules/warehouses/warehouses.module').then( m => m.WarehousesModule )
+      },
+      {
         path: 'tickets',
         loadChildren: () => import('./modules/tickets/tickets.module').then( m => m.TicketsModule )
       },

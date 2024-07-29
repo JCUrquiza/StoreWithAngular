@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ValidatorsService } from '../../../../shared/service/validators.service';
 import { CompanyService } from '../../../services/company.service';
 import { BranchOfficeService } from '../../../services/branch-office.service';
 import { tap } from 'rxjs';
 import { MessageService } from 'primeng/api';
+import { ValidatorsService } from '../../../../../../shared/service/validators.service';
 
 interface Company {
   id: number;

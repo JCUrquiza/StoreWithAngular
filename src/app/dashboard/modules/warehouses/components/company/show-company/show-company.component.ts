@@ -4,7 +4,8 @@ import { tap } from 'rxjs';
 import { CompanyService } from '../../../services/company.service';
 import { Company } from '../../../interfaces';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ValidatorsService } from '../../../../shared/service/validators.service';
+import { ValidatorsService } from '../../../../../../shared/service/validators.service';
+
 
 @Component({
   selector: 'show-company',

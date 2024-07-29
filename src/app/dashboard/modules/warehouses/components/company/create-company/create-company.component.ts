@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CompanyService } from '../../../services/company.service';
-import { ValidatorsService } from '../../../../shared/service/validators.service';
-
 import { MessageService } from 'primeng/api';
 import { tap } from 'rxjs';
+import { CompanyService } from '../../../services/company.service';
+import { ValidatorsService } from '../../../../../../shared/service/validators.service';
+
 
 @Component({
   selector: 'create-company',

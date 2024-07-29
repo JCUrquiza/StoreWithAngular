@@ -4,7 +4,8 @@ import { WarehousesService } from '../../../services/warehouses.service';
 import { BranchesOffice, Product, Warehouse } from '../../../interfaces';
 import { BranchOfficeService } from '../../../services/branch-office.service';
 import { ProductsService } from '../../../services/products.service';
-import { ValidatorsService } from '../../../../shared/service/validators.service';
+import { ValidatorsService } from '../../../../../../shared/service/validators.service';
+
 
 interface ProductsSelected {
   id: number,
