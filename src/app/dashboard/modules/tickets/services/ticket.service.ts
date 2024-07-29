@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CatalogueResponse, TicketsResponse } from '../interfaces';
@@ -53,8 +53,13 @@ export class TicketsService {
     return this.http.get<CatalogueResponse>( this.apiBaseCatalogue + url );
   }
 
-  public createTicket(url: string, body: any) {
-    return this.http.post( this.apiBaseTickets + url, body );
+  public createTicket(url: string, body: any, token: any) {
+    // Configurar los encabezados
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    });
+    return this.http.post( this.apiBaseTickets + url, body, { headers } );
   }
 
   public attendTicket(url: string, id: number) {

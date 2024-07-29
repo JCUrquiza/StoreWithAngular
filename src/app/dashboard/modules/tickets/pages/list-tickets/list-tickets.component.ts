@@ -29,7 +29,7 @@ export class ListTicketsComponent implements OnInit {
   };
 
   public newTicketForm: FormGroup = this.fb.group({
-    categoryId: ['', [Validators.required]],
+    categoryId: [null, [Validators.required]],
     description: ['', [Validators.required]]
   });
 
@@ -96,7 +96,25 @@ export class ListTicketsComponent implements OnInit {
 
 
   public sendNewTicket() {
-    console.log(this.newTicketForm.value);
+    const body = {
+      description: this.newTicketForm.value.description,
+      catalogueId: this.newTicketForm.value.categoryId.id,
+    }
+
+    const token = localStorage.getItem('token');
+
+    this.ticketsService.createTicket('/create', body, token).pipe(
+      tap({
+        next: (resp) => {
+          console.log(resp);
+          this.loadTickets();
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      })
+    ).subscribe();
+
     this.showDialogNewTicket = false;
   }
 
