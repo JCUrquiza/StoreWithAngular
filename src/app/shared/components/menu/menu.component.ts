@@ -33,13 +33,19 @@ export class MenuComponent {
         ]
       },
       {
-        label: 'Open',
-        icon: 'pi pi-fw pi-download',
+        label: 'Tickets',
+        icon: 'pi-wallet',
         items: [
           { label: 'Make Ticket', icon: 'pi pi-ticket', routerLink: '/dashboard/tickets/list' },
         ]
       },
-      { label: 'Undo', icon: 'pi pi-fw pi-refresh' },
+      {
+        label: 'Customers',
+        icon: 'pi pi-user',
+        items: [
+          { label: 'List Users', icon: 'pi pi-users' },
+        ]
+      },
     ]
   }
 
