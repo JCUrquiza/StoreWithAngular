@@ -1,7 +1,7 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environments';
-import { catchError, map, Observable, of, tap, throwError } from 'rxjs';
+import { catchError, delay, map, Observable, of, tap, throwError } from 'rxjs';
 import { AuthStatus, CheckTokenResponse, LoginResponse, User } from '../interfaces';
 
 @Injectable({
@@ -38,6 +38,7 @@ export class AuthService {
 
     return this.http.post<LoginResponse>(url, body)
       .pipe(
+        delay(3000),
         map( ({ user, token }) => this.setAuthentication(user, token) ),
         catchError( err => throwError( () => err.error.error ))
       );

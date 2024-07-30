@@ -48,6 +48,30 @@ h2 {
 }
 
 
+/* Capa de superposición */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con opacidad */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Asegúrate de que esté sobre el contenido */
+}
+
+/* Estilos para el spinner */
+.spinner-container {
+  position: relative;
+}
+
+/* Opcional: Para hacer el formulario más opaco */
+.form-opacity {
+  opacity: 0.3; /* Ajusta el valor para la opacidad deseada */
+  pointer-events: none; /* Evita que el formulario sea interactivo cuando el spinner está activo */
+}
 
 
 
