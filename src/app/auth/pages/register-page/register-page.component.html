@@ -1,1 +1,60 @@
-<p>register-page works!</p>
+<form autocomplete="off">
+  <!-- [formGroup]="myForm" (ngSubmit)="login()" -->
+
+  <div class="flex flex-column align-items-center justify-content-center">
+
+    <h1>Register</h1>
+
+    <div class="input-group">
+      <label for="email">Name</label>
+      <input
+        pInputText
+        id="email"
+        placeholder="Email"
+      />
+    </div>
+
+    <div class="input-group">
+      <label for="email">Email</label>
+      <input
+        pInputText
+        id="email"
+        placeholder="Email"
+      />
+    </div>
+
+    <div class="input-group">
+      <label for="password">Password</label>
+      <input
+        pInputText
+        type="password"
+        id="password"
+        placeholder="Password"
+      />
+    </div>
+
+    <button
+      type="submit"
+      pButton
+      pRipple
+      style="margin-top: 20px;"
+    >
+      Register
+    </button>
+
+    <div style="margin-top: 60px;">
+
+      <span class="txt1 p-b-17">
+        ¿Ya tienes una cuenta?
+      </span>
+
+      <a routerLink="/auth/login" class="txt2">
+        Ingresa aquí
+      </a>
+
+    </div>
+
+  </div>
+
+</form>
+

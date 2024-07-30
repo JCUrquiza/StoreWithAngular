@@ -108,9 +108,11 @@ export class ListTicketsComponent implements OnInit {
         next: (resp) => {
           console.log(resp);
           this.loadTickets();
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Ticket created successfully' });
         },
         error: (error) => {
           console.log(error);
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.error });
         }
       })
     ).subscribe();

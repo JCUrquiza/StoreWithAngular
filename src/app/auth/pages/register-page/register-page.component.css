@@ -1,0 +1,53 @@
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente el contenido */
+  justify-content: center; /* Centra verticalmente el contenido */
+  height: 100vh; /* Hace que el formulario ocupe toda la altura de la ventana */
+  margin: 0; /* Elimina el margen por defecto */
+  padding: 20px; /* Añade algo de espacio alrededor del formulario */
+}
+
+/* Estilos para los campos de entrada */
+.input-group {
+  width: 400px; /* Ancho fijo para los campos de entrada */
+  margin-bottom: 20px; /* Espacio entre los campos de entrada y el botón */
+  display: flex;
+  flex-direction: column; /* Alinea el label y el input verticalmente */
+}
+
+.input-group label {
+  margin-bottom: 5px; /* Espacio entre el label y el input */
+  font-weight: bold; /* Opcional: hace que el texto del label sea más destacado */
+}
+
+/* Estilos para el botón */
+button {
+  width: 200px; /* Ancho fijo para el botón */
+  height: 50px;
+  color: white;
+  background-color: rgb(72, 8, 131);
+  border: none; /* Quitar borde por defecto */
+  border-radius: 5px; /* Opcional: redondea las esquinas del botón */
+  padding: 10px; /* Añade espacio interno */
+  cursor: pointer; /* Cambia el cursor a una mano al pasar sobre el botón */
+  font-size: 16px; /* Tamaño de fuente para el botón */
+  text-align: center; /* Centra el texto dentro del botón */
+  display: flex; /* Usa Flexbox para asegurar el centrado */
+  align-items: center; /* Centra verticalmente el texto usando Flexbox */
+  justify-content: center; /* Centra horizontalmente el texto usando Flexbox */
+}
+
+button:hover {
+  background-color: rgb(55, 5, 105); /* Cambia el color al pasar el ratón sobre el botón */
+}
+
+/* Estilos opcionales para el título */
+h2 {
+  margin-bottom: 70px; /* Espacio debajo del título */
+}
+
+
+
+
+
