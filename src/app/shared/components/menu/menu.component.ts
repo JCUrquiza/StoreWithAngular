@@ -43,7 +43,7 @@ export class MenuComponent {
         label: 'Customers',
         icon: 'pi pi-user',
         items: [
-          { label: 'List Users', icon: 'pi pi-users' },
+          { label: 'List Users', icon: 'pi pi-users', routerLink: '/dashboard/customers/list' },
         ]
       },
     ]
