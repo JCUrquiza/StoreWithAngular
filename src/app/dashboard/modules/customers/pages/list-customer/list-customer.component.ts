@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../../services/customer.service';
+import { Customer } from '../../interfaces';
 
 @Component({
   selector: 'app-list-customer',
@@ -7,6 +8,8 @@ import { CustomerService } from '../../services/customer.service';
   styleUrl: './list-customer.component.css'
 })
 export class ListCustomerComponent implements OnInit {
+
+  public customers: Customer[] = [];
 
   constructor(
     private customerService: CustomerService
@@ -20,7 +23,21 @@ export class ListCustomerComponent implements OnInit {
     this.customerService.getAllCustomers('/getAll/customers')
       .subscribe( resp => {
         console.log(resp);
+        this.customers = resp.customers;
       });
+  }
+
+  public getSeverity(statusCode: string): 'success' | 'secondary' | 'info' | 'warning' | 'danger' | 'contrast' | undefined {
+    switch(statusCode) {
+      case 'penrev':
+        return 'info';
+      case 'Atendo':
+        return 'danger';
+      case 'Reslto':
+        return 'success';
+      default:
+        return undefined;
+    }
   }
 
 }

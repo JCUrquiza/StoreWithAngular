@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CustomersRoutingModule } from './customers-routing.module';
 import { ListCustomerComponent } from './pages/list-customer/list-customer.component';
 import { DetailCustomerComponent } from './pages/detail-customer/detail-customer.component';
+import { PrimeNgModule } from '../../../prime-ng/prime-ng.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { DetailCustomerComponent } from './pages/detail-customer/detail-customer
   ],
   imports: [
     CommonModule,
-    CustomersRoutingModule
+    CustomersRoutingModule,
+    PrimeNgModule,
   ]
 })
 export class CustomersModule { }

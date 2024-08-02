@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../../../environments/environments';
+import { Observable } from 'rxjs';
+import { CustomerResponse } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +15,8 @@ export class CustomerService {
     private http: HttpClient
   ) {}
 
-  getAllCustomers(url: string) {
-    return this.http.get( this.baseURL + url );
+  getAllCustomers(url: string): Observable<CustomerResponse> {
+    return this.http.get<CustomerResponse>( this.baseURL + url );
   }
 
 }
