@@ -22,7 +22,11 @@ export class CustomerService {
   }
 
   getBranchOffices(url: string): Observable<BranchOfficeResponse> {
-    return this.http.get<BranchOfficeResponse>(this.baseURLBranchOffice + url);
+    return this.http.get<BranchOfficeResponse>( this.baseURLBranchOffice + url );
+  }
+
+  createCustomer(url: string, body: any) {
+    return this.http.post( this.baseURL + url, body );
   }
 
   getAllCustomers(url: string): Observable<CustomerResponse> {

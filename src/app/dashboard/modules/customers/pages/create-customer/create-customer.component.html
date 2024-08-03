@@ -24,10 +24,10 @@
       </div>
 
       <div class="flex flex-column col-12 md:col-4">
-        <label for="name">Surename</label>
+        <label for="sureName">Surename</label>
         <input
           pInputText
-          id="name"
+          id="sureName"
           formControlName="sureName"
         />
         <small
@@ -39,10 +39,10 @@
       </div>
 
       <div class="flex flex-column col-12 md:col-4">
-        <label for="name">Second Surname</label>
+        <label for="secondSureName">Second Surname</label>
         <input
           pInputText
-          id="name"
+          id="secondSureName"
           formControlName="secondSureName"
         />
         <small
@@ -54,10 +54,10 @@
       </div>
 
       <div class="flex flex-column col-12 md:col-4">
-        <label for="name">Email</label>
+        <label for="email">Email</label>
         <input
           pInputText
-          id="name"
+          id="email"
           formControlName="email"
         />
         <small
@@ -69,10 +69,10 @@
       </div>
 
       <div class="flex flex-column col-12 md:col-8">
-        <label for="name">Address</label>
+        <label for="address">Address</label>
         <input
           pInputText
-          id="name"
+          id="address"
           formControlName="address"
         />
         <small
@@ -83,8 +83,24 @@
         </small>
       </div>
 
-      <div class="flex flex-column col-12 md:col-4">
-        <label for="name">Type Customer</label>
+      <div class="flex flex-column col-12 md:col-3">
+        <label for="telephone">Phone</label>
+        <input
+          pInputText
+          id="telephone"
+          maxlength="10"
+          formControlName="telephone"
+        />
+        <small
+          *ngIf="isNotValidField('telephone')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('telephone') }}
+        </small>
+      </div>
+
+      <div class="flex flex-column col-12 md:col-3">
+        <label for="typeCustomerId">Type Customer</label>
         <p-dropdown
           [options]="typeCustomer"
           placeholder="Select type of customer"
@@ -99,8 +115,8 @@
         </small>
       </div>
 
-      <div class="flex flex-column col-12 md:col-4">
-        <label for="name">Branch Office</label>
+      <div class="flex flex-column col-12 md:col-3">
+        <label for="branchOfficeId">Branch Office</label>
         <p-dropdown
           [options]="branchOffices"
           placeholder="Select branch office"
@@ -118,7 +134,7 @@
       <div class="flex flex-column col-12 md:col-3">
         <button
           class="ml-auto mt-3 custom-button"
-          style="width: 300px;"
+          style="width: 200px;"
           type="submit"
           pButton
           pRipple
@@ -133,3 +149,10 @@
 
 </p-panel>
 
+
+<p-toast
+  [showTransformOptions]="'translateY(100%)'"
+  [showTransitionOptions]="'1000ms'"
+  [hideTransitionOptions]="'1000ms'"
+  [hideTransformOptions]="'translateX(100%)'"
+></p-toast>

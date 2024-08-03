@@ -5,7 +5,7 @@ import { FormGroup } from "@angular/forms";
 @Injectable({ providedIn: 'root' })
 export class ValidatorsService {
 
-  public firstNameAndLastnamePattern: string = '([a-zA-Z]+) ([a-zA-Z]+)';
+  public firstNameAndLastnamePattern: string = '^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+ ?[a-zA-ZáéíóúÁÉÍÓÚñÑ]+ ?$';
   public emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
   public alphaNumericWithSignsPattern: string = '^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ,.\\s]+$';
   public numericPattern: string = '^[0-9]+$';
