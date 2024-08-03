@@ -49,6 +49,7 @@ export class LoginPageComponent {
         },
         error: (error) => {
           console.log({ loginPage: error });
+          this.loadUserLogin = false;
         }
       })
   }

@@ -1,0 +1,135 @@
+<p-panel header="Create customer" class="p-1">
+
+  <p>
+    Fill the form to save customer
+  </p>
+
+  <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="send()">
+
+    <div class="grid">
+
+      <div class="flex flex-column col-12 md:col-4">
+        <label for="name">Name</label>
+        <input
+          pInputText
+          id="name"
+          formControlName="name"
+        />
+        <small
+          *ngIf="isNotValidField('name')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('name') }}
+        </small>
+      </div>
+
+      <div class="flex flex-column col-12 md:col-4">
+        <label for="name">Surename</label>
+        <input
+          pInputText
+          id="name"
+          formControlName="sureName"
+        />
+        <small
+          *ngIf="isNotValidField('sureName')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('sureName') }}
+        </small>
+      </div>
+
+      <div class="flex flex-column col-12 md:col-4">
+        <label for="name">Second Surname</label>
+        <input
+          pInputText
+          id="name"
+          formControlName="secondSureName"
+        />
+        <small
+          *ngIf="isNotValidField('secondSureName')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('secondSureName') }}
+        </small>
+      </div>
+
+      <div class="flex flex-column col-12 md:col-4">
+        <label for="name">Email</label>
+        <input
+          pInputText
+          id="name"
+          formControlName="email"
+        />
+        <small
+          *ngIf="isNotValidField('email')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('email') }}
+        </small>
+      </div>
+
+      <div class="flex flex-column col-12 md:col-8">
+        <label for="name">Address</label>
+        <input
+          pInputText
+          id="name"
+          formControlName="address"
+        />
+        <small
+          *ngIf="isNotValidField('address')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('address') }}
+        </small>
+      </div>
+
+      <div class="flex flex-column col-12 md:col-4">
+        <label for="name">Type Customer</label>
+        <p-dropdown
+          [options]="typeCustomer"
+          placeholder="Select type of customer"
+          optionLabel="name"
+          formControlName="typeCustomerId"
+        />
+        <small
+          *ngIf="isNotValidField('typeCustomerId')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('typeCustomerId') }}
+        </small>
+      </div>
+
+      <div class="flex flex-column col-12 md:col-4">
+        <label for="name">Branch Office</label>
+        <p-dropdown
+          [options]="branchOffices"
+          placeholder="Select branch office"
+          optionLabel="name"
+          formControlName="branchOfficeId"
+        />
+        <small
+          *ngIf="isNotValidField('branchOfficeId')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('branchOfficeId') }}
+        </small>
+      </div>
+
+      <div class="flex flex-column col-12 md:col-3">
+        <button
+          class="ml-auto mt-3 custom-button"
+          style="width: 300px;"
+          type="submit"
+          pButton
+          pRipple
+        >
+          Send
+        </button>
+      </div>
+
+    </div>
+
+  </form>
+
+</p-panel>
+

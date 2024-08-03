@@ -10,9 +10,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { MenubarModule } from 'primeng/menubar';
 import { MenuModule } from 'primeng/menu';
 import { PanelModule } from 'primeng/panel';
-
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-
 import { RippleModule } from 'primeng/ripple';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
@@ -31,9 +29,7 @@ import { ToastModule } from 'primeng/toast';
     MenubarModule,
     MenuModule,
     PanelModule,
-
     ProgressSpinnerModule,
-
     RippleModule,
     TableModule,
     TagModule,
@@ -45,3 +41,4 @@ import { ToastModule } from 'primeng/toast';
   ]
 })
 export class PrimeNgModule { }
+

@@ -1,3 +1,5 @@
+import { TypeCustomer } from './type.customer.interface';
+
 export interface CustomerResponse {
   customers: Customer[];
 }
@@ -31,9 +33,9 @@ export interface Status {
   color: string;
 }
 
-export interface TypeCustomer {
-  id:   number;
-  name: string;
-}
+// export interface TypeCustomer {
+//   id:   number;
+//   name: string;
+// }
 
 

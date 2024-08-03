@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../../../../environments/environments';
 import { Observable } from 'rxjs';
-import { CustomerResponse } from '../interfaces';
+import { environment } from '../../../../../environments/environments';
+import { CustomerResponse, TypeCustomerResponse } from '../interfaces';
+import { BranchOfficeResponse } from '../../warehouses/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,19 @@ import { CustomerResponse } from '../interfaces';
 export class CustomerService {
 
   private baseURL: string = `${ environment.baseUrl }/api/v1/customer`;
+  private baseURLBranchOffice: string = `${ environment.baseUrl }/api/v1/branchesOffices`;
 
   constructor(
     private http: HttpClient
   ) {}
+
+  getTypeCustomers(url: string): Observable<TypeCustomerResponse> {
+    return this.http.get<TypeCustomerResponse>( this.baseURL + url );
+  }
+
+  getBranchOffices(url: string): Observable<BranchOfficeResponse> {
+    return this.http.get<BranchOfficeResponse>(this.baseURLBranchOffice + url);
+  }
 
   getAllCustomers(url: string): Observable<CustomerResponse> {
     return this.http.get<CustomerResponse>( this.baseURL + url );
