@@ -1,14 +1,18 @@
-import { TypeCustomer } from './type.customer.interface';
+import { TypeCustomer  } from './type.customer.interface';
+
+export interface CustomersResponse {
+  customers: Customer[];
+}
 
 export interface CustomerResponse {
-  customers: Customer[];
+  customer: Customer;
 }
 
 export interface Customer {
   id:              number;
   name:            string;
-  apellidoPaterno: string;
-  apellidoMaterno: string;
+  sureName:        string;
+  secondSureName:  string;
   email:           string;
   address:         string;
   telephone:       string;
@@ -32,10 +36,5 @@ export interface Status {
   code:  string;
   color: string;
 }
-
-// export interface TypeCustomer {
-//   id:   number;
-//   name: string;
-// }
 
 

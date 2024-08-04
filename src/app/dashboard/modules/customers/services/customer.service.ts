@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../../environments/environments';
-import { CustomerResponse, TypeCustomerResponse } from '../interfaces';
+import { CustomerResponse, CustomersResponse, TypeCustomerResponse } from '../interfaces';
 import { BranchOfficeResponse } from '../../warehouses/interfaces';
 
 @Injectable({
@@ -29,12 +29,12 @@ export class CustomerService {
     return this.http.post( this.baseURL + url, body );
   }
 
-  getAllCustomers(url: string): Observable<CustomerResponse> {
-    return this.http.get<CustomerResponse>( this.baseURL + url );
+  getAllCustomers(url: string): Observable<CustomersResponse> {
+    return this.http.get<CustomersResponse>( this.baseURL + url );
   }
 
-  getCustomerDetail(url: string) {
-    return this.http.get( this.baseURL + url );
+  getCustomerDetail(url: string): Observable<CustomerResponse> {
+    return this.http.get<CustomerResponse>( this.baseURL + url );
   }
 
 }
