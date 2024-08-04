@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../../services/customer.service';
 import { Customer } from '../../interfaces';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-customer',
@@ -12,7 +13,8 @@ export class ListCustomerComponent implements OnInit {
   public customers: Customer[] = [];
 
   constructor(
-    private customerService: CustomerService
+    private customerService: CustomerService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +40,11 @@ export class ListCustomerComponent implements OnInit {
       default:
         return undefined;
     }
+  }
+
+  public goDetailsCustomer(id: string): void {
+    localStorage.setItem('customerId', id);
+    this.router.navigate(['dashboard/customers/details']);
   }
 
 }

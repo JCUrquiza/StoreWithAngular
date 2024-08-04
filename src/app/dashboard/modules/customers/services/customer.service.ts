@@ -33,4 +33,8 @@ export class CustomerService {
     return this.http.get<CustomerResponse>( this.baseURL + url );
   }
 
+  getCustomerDetail(url: string) {
+    return this.http.get( this.baseURL + url );
+  }
+
 }

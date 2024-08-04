@@ -5,6 +5,7 @@ import { BranchOffice, TypeCustomer } from '../../interfaces';
 import { ValidatorsService } from '../../../../../shared/service/validators.service';
 import { tap } from 'rxjs';
 import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-customer',
@@ -74,7 +75,6 @@ export class CreateCustomerComponent implements OnInit {
   getFieldError( field: string ) {
     return this.validatorsService.getMessageError(this.myForm, field);
   }
-
 
   public send(): void {
     if ( this.myForm.invalid ) {
