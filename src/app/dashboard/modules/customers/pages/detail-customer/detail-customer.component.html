@@ -1,7 +1,7 @@
-<p-panel header="Create customer" class="p-1">
+<p-panel header="Customer Modify" class="p-1">
 
   <p>
-    Fill the form to save customer
+    Customer Details
   </p>
 
   <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="send()">
@@ -133,7 +133,7 @@
 
       <div class="flex flex-column col-12 md:col-3">
         <button
-          class="ml-auto mt-3 custom-button"
+          class="ml-auto mt-3 custom-button custom-button"
           style="width: 200px;"
           type="submit"
           pButton
@@ -146,6 +146,34 @@
     </div>
 
   </form>
+
+  <div class="grid">
+
+    <div class="flex flex-column col-12 md:col-3">
+      <button
+        class="ml-auto mt-3 custom-button custom-button"
+        style="width: 200px;"
+        pButton
+        pRipple
+        (click)="updateStatus(7)"
+      >
+        Pre Autorizar
+      </button>
+    </div>
+
+    <div class="flex flex-column col-12 md:col-3">
+      <button
+        class="ml-auto mt-3 custom-button custom-button"
+        style="width: 200px;"
+        pButton
+        pRipple
+        (click)="updateStatus(8)"
+      >
+        Autorizar
+      </button>
+    </div>
+
+  </div>
 
 </p-panel>
 

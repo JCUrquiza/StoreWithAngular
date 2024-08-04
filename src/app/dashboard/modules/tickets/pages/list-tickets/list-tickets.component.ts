@@ -5,9 +5,7 @@ import { tap } from 'rxjs';
 import { Catalogue, Ticket } from '../../interfaces';
 import { TicketsService } from '../../services/ticket.service';
 import { ValidatorsService } from '../../../../../shared/service/validators.service';
-// import { TicketsService } from '../../services/tickets.service';
-// import { Catalogue, Ticket } from '../../interfaces/tickets.interface';
-// import { ValidatorsService } from '../../../shared/service/validators.service';
+
 
 @Component({
   selector: 'app-list-tickets',
@@ -120,7 +118,6 @@ export class ListTicketsComponent implements OnInit {
     this.showDialogNewTicket = false;
   }
 
-
   public openDialogTicket(ticket: Ticket) {
     this.showDialogAttendTicket = true;
     this.ticketForm.patchValue({
@@ -149,3 +146,6 @@ export class ListTicketsComponent implements OnInit {
   }
 
 }
+
+
+

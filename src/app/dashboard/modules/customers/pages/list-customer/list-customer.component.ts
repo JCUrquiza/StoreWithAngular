@@ -25,6 +25,7 @@ export class ListCustomerComponent implements OnInit {
     this.customerService.getAllCustomers('/getAll/customers')
       .subscribe( resp => {
         this.customers = resp.customers;
+        console.log(this.customers);
       });
   }
 
@@ -32,9 +33,9 @@ export class ListCustomerComponent implements OnInit {
     switch(statusCode) {
       case 'penrev':
         return 'info';
-      case 'Atendo':
+      case 'Preaut':
         return 'danger';
-      case 'Reslto':
+      case 'Autori':
         return 'success';
       default:
         return undefined;

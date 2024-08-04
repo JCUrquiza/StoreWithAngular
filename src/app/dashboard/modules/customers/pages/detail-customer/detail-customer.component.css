@@ -1,0 +1,8 @@
+.custom-button {
+  display: flex;
+  justify-content: center; /* Centra el texto horizontalmente */
+  align-items: center; /* Centra el texto verticalmente si es necesario */
+  text-align: center; /* Asegura que el texto esté centrado */
+}
+
+

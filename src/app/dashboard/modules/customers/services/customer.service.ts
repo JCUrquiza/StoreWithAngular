@@ -37,4 +37,12 @@ export class CustomerService {
     return this.http.get<CustomerResponse>( this.baseURL + url );
   }
 
+  updateCustomer(url: string, body: any) {
+    return this.http.put( this.baseURL + url, body );
+  }
+
+  updateStatusCustomer(url: string, body: any) {
+    return this.http.post( this.baseURL +  url, body);
+  }
+
 }
