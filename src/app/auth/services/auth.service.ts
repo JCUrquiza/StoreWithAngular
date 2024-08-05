@@ -18,6 +18,8 @@ export class AuthService {
   public currentUser = computed( () => this._currentUser() );
   public authStatus = computed( () => this._authStatus() );
 
+  public infoUser = {};
+
   constructor() {
     this.checkAuthStatus().subscribe();
   }
@@ -26,6 +28,21 @@ export class AuthService {
     this._currentUser.set( user );
     this._authStatus.set( AuthStatus.authenticated );
     localStorage.setItem('token', token);
+
+    // Decodificar Token:
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g,'+').replace(/_/g,'/');
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split('')
+        .map((c) => {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join('')
+    );
+    const tokenToJson = JSON.parse(jsonPayload);
+    this.saveInfoUserFromToken(tokenToJson);
+
     return true;
   }
 
@@ -68,11 +85,15 @@ export class AuthService {
 
   }
 
-
   logout() {
     localStorage.removeItem('token');
     this._currentUser.set( null );
     this._authStatus.set( AuthStatus.notAuthenticated );
+  }
+
+  saveInfoUserFromToken(infoUser: any) {
+    this.infoUser = infoUser;
+    console.log(infoUser);
   }
 
 }
