@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { AvatarModule } from 'primeng/avatar';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { ConfirmationService, MessageService } from 'primeng/api';
@@ -16,12 +17,10 @@ import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { ToastModule } from 'primeng/toast';
 
-import { BadgeModule } from 'primeng/badge';
-import { AvatarModule } from 'primeng/avatar';
-
 
 @NgModule({
   exports: [
+    AvatarModule,
     ButtonModule,
     CardModule,
     ConfirmDialogModule,
@@ -37,10 +36,6 @@ import { AvatarModule } from 'primeng/avatar';
     TableModule,
     TagModule,
     ToastModule,
-
-    BadgeModule,
-    AvatarModule,
-
   ],
   providers: [
     ConfirmationService,

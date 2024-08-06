@@ -57,13 +57,14 @@ export class MenuComponent {
           {
             label: 'Settings',
             icon: 'pi pi-cog',
+            routerLink: '/dashboard/user/settings',
             shortcut: '⌘+O'
           },
-          {
-            label: 'Messages',
-            icon: 'pi pi-inbox',
-            badge: '2'
-          },
+          // {
+          //   label: 'Messages',
+          //   icon: 'pi pi-inbox',
+          //   badge: '2'
+          // },
           {
             label: 'Logout',
             icon: 'pi pi-sign-out',
