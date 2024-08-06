@@ -30,6 +30,13 @@ export class AuthService {
     localStorage.setItem('token', token);
 
     // Decodificar Token:
+    this.decodifyAndSaveToken(token);
+
+    return true;
+  }
+
+
+  decodifyAndSaveToken(token: string) {
     const base64Url = token.split('.')[1];
     const base64 = base64Url.replace(/-/g,'+').replace(/_/g,'/');
     const jsonPayload = decodeURIComponent(
@@ -40,10 +47,10 @@ export class AuthService {
         })
         .join('')
     );
+    // from string to json:
     const tokenToJson = JSON.parse(jsonPayload);
-    this.saveInfoUserFromToken(tokenToJson);
-
-    return true;
+    // And save token:
+    this.infoUser = tokenToJson;
   }
 
   login( email:string, password: string ): Observable<boolean> {
@@ -91,10 +98,6 @@ export class AuthService {
     this._authStatus.set( AuthStatus.notAuthenticated );
   }
 
-  saveInfoUserFromToken(infoUser: any) {
-    this.infoUser = infoUser;
-    console.log(infoUser);
-  }
 
 }
 

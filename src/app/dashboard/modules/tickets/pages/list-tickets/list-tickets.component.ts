@@ -5,6 +5,7 @@ import { tap } from 'rxjs';
 import { Catalogue, Ticket } from '../../interfaces';
 import { TicketsService } from '../../services/ticket.service';
 import { ValidatorsService } from '../../../../../shared/service/validators.service';
+import { AuthService } from '../../../../../auth/services/auth.service';
 
 
 @Component({
@@ -42,11 +43,13 @@ export class ListTicketsComponent implements OnInit {
     private fb: FormBuilder,
     private messageService: MessageService,
     private validatorsService: ValidatorsService,
+    private authService: AuthService,
   ) {}
 
   ngOnInit(): void {
     this.loadTickets();
     this.loadCatalogue();
+    console.log( this.authService.infoUser );
   }
 
   public showActions(action: string): void {
