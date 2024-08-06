@@ -1,9 +1,13 @@
 <p-menubar [model]="menuItems">
 
-  <p-button class="pr-2" label="Logout" severity="primary" (onClick)="logout()" />
-
   <img src="./favicon.ico" alt="Icon" />
 
-</p-menubar>
+  <ng-template pTemplate="end">
+    <div class="flex align-items-center gap-2">
+      <p-menubar [model]="userOptions" />
+      <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
+    </div>
+  </ng-template>
 
+</p-menubar>
 

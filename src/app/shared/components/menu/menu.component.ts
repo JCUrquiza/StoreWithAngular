@@ -10,6 +10,7 @@ import { AuthService } from '../../../auth/services/auth.service';
 export class MenuComponent {
 
   public menuItems: MenuItem[] = [];
+  public userOptions: MenuItem[] = [];
 
   constructor(
     public authService: AuthService
@@ -47,7 +48,32 @@ export class MenuComponent {
           { label: 'List Customers', icon: 'pi pi-users', routerLink: '/dashboard/customers/list' },
         ]
       },
-    ]
+    ];
+
+    this.userOptions = [
+      {
+        label: 'Profile',
+        items: [
+          {
+            label: 'Settings',
+            icon: 'pi pi-cog',
+            shortcut: '⌘+O'
+          },
+          {
+            label: 'Messages',
+            icon: 'pi pi-inbox',
+            badge: '2'
+          },
+          {
+            label: 'Logout',
+            icon: 'pi pi-sign-out',
+            shortcut: '⌘+Q',
+            command: () => this.logout()
+          }
+        ]
+      }
+    ];
+
   }
 
   public logout(): void {

@@ -16,6 +16,9 @@ import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { ToastModule } from 'primeng/toast';
 
+import { BadgeModule } from 'primeng/badge';
+import { AvatarModule } from 'primeng/avatar';
+
 
 @NgModule({
   exports: [
@@ -34,6 +37,10 @@ import { ToastModule } from 'primeng/toast';
     TableModule,
     TagModule,
     ToastModule,
+
+    BadgeModule,
+    AvatarModule,
+
   ],
   providers: [
     ConfirmationService,
