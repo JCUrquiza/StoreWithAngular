@@ -48,6 +48,16 @@ export class MenuComponent {
           { label: 'List Customers', icon: 'pi pi-users', routerLink: '/dashboard/customers/list' },
         ]
       },
+
+      {
+        label: 'Work Order',
+        icon: 'pi pi-book',
+        items: [
+          { label: 'Create', icon: 'pi pi-file-plus', routerLink: '/dashboard/workOrder/create' },
+          { label: 'List', icon: 'pi pi-align-justify', routerLink: '/dashboard/workOrder/list' },
+          { label: 'Details', icon: 'pi pi-file-edit', routerLink: '/dashboard/workOrder/details' },
+        ]
+      }
     ];
 
     this.userOptions = [

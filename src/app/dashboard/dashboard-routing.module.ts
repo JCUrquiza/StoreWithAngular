@@ -24,6 +24,10 @@ const routes: Routes = [
         loadChildren: () => import('./modules/users/users.module').then( m => m.UsersModule )
       },
       {
+        path: 'workOrder',
+        loadChildren: () => import('./modules/work-order/work-order.module').then( m => m.WorkOrderModule )
+      },
+      {
         path: '',
         redirectTo: 'tickets',
         pathMatch: 'full'
