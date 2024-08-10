@@ -5,6 +5,7 @@ import { WorkOrderRoutingModule } from './work-order-routing.module';
 import { ListWorkOrderComponent } from './pages/list-work-order/list-work-order.component';
 import { CreateWorkOrderComponent } from './pages/create-work-order/create-work-order.component';
 import { DetailsWorkOrderComponent } from './pages/details-work-order/details-work-order.component';
+import { PrimeNgModule } from '../../../prime-ng/prime-ng.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { DetailsWorkOrderComponent } from './pages/details-work-order/details-wo
   ],
   imports: [
     CommonModule,
-    WorkOrderRoutingModule
+    WorkOrderRoutingModule,
+    PrimeNgModule
   ]
 })
 export class WorkOrderModule { }
