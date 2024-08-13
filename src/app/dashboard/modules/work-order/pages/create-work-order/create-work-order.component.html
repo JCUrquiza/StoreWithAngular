@@ -1,6 +1,8 @@
 <div class="mt-2">
 
-  <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+  <form autocomplete="off" [formGroup]="productForm" (ngSubmit)="getFormData()">
+
+    <p-table [value]="productsFormArray.controls" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header">
       <tr>
         <th>Id</th>
@@ -10,8 +12,8 @@
         <th>Quantity</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-product>
-      <tr>
+    <ng-template pTemplate="body" let-product let-rowIndex="rowIndex">
+      <tr [formGroupName]="rowIndex">
         <td>{{ product.id }}</td>
         <td>{{ product.codigoSKU }}</td>
         <td>{{ product.productFamily.name }}</td>
@@ -22,11 +24,13 @@
             id="state"
             aria-describedby="address-help"
             type="text"
+            formControlName="quantity"
           />
         </td>
       </tr>
     </ng-template>
   </p-table>
+  </form>
 
 </div>
 

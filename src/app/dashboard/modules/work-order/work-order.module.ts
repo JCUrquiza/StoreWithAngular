@@ -6,6 +6,7 @@ import { ListWorkOrderComponent } from './pages/list-work-order/list-work-order.
 import { CreateWorkOrderComponent } from './pages/create-work-order/create-work-order.component';
 import { DetailsWorkOrderComponent } from './pages/details-work-order/details-work-order.component';
 import { PrimeNgModule } from '../../../prime-ng/prime-ng.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,8 +17,9 @@ import { PrimeNgModule } from '../../../prime-ng/prime-ng.module';
   ],
   imports: [
     CommonModule,
+    PrimeNgModule,
+    ReactiveFormsModule,
     WorkOrderRoutingModule,
-    PrimeNgModule
   ]
 })
 export class WorkOrderModule { }
