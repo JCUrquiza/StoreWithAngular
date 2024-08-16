@@ -1,33 +1,150 @@
 <div class="mt-2">
 
-  <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
-    <ng-template pTemplate="header">
-      <tr>
-        <th>Id</th>
-        <th>SKU</th>
-        <th>Family</th>
-        <th>Name</th>
-        <th>Quantity</th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-product>
-      <tr>
-        <td>{{ product.id }}</td>
-        <td>{{ product.codigoSKU }}</td>
-        <td>{{ product.productFamily.name }}</td>
-        <td>{{ product.name }}</td>
-        <td>
-          <input
-            pInputText
-            id="state"
-            aria-describedby="address-help"
-            type="text"
-          />
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
+  <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="sendForm()">
+
+    <div class="grid">
+
+      <div class="flex flex-column col-12 md:col-2">
+        <label for="address">Address</label>
+        <input
+          pInputText
+          id="address"
+          aria-describedby="address"
+          formControlName="address"
+        />
+        <!-- <small
+          *ngIf="isNotValidField('salePrice')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('salePrice') }}
+        </small> -->
+      </div>
+
+      <div class="flex flex-column col-12 md:col-2">
+        <label for="priceOfLabor">Price Of Labor</label>
+        <input
+          pInputText
+          id="priceOfLabor"
+          aria-describedby="priceOfLabor"
+          formControlName="priceOfLabor"
+        />
+        <!-- <small
+          *ngIf="isNotValidField('salePrice')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('salePrice') }}
+        </small> -->
+      </div>
+
+      <div class="flex flex-column col-12 md:col-2">
+        <label for="priceOfTransfer">Price Of Transfer</label>
+        <input
+          pInputText
+          id="priceOfTransfer"
+          aria-describedby="priceOfTransfer"
+          formControlName="priceOfTransfer"
+        />
+        <!-- <small
+          *ngIf="isNotValidField('salePrice')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('salePrice') }}
+        </small> -->
+      </div>
+
+      <div class="flex flex-column col-12 md:col-2">
+        <label for="priceTotal">Price Total</label>
+        <input
+          pInputText
+          id="priceTotal"
+          aria-describedby="priceTotal"
+          formControlName="priceTotal"
+        />
+        <!-- <small
+          *ngIf="isNotValidField('salePrice')"
+          style="color: red; padding-top: 10px;"
+        >
+          {{ getFieldError('salePrice') }}
+        </small> -->
+      </div>
+
+      <!-- ========================== -->
+      <!-- ===== Product to add ===== -->
+      <!-- ========================== -->
+      <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Id</th>
+            <th>SKU</th>
+            <th>Family</th>
+            <th>Name</th>
+            <th></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+          <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.codigoSKU }}</td>
+            <td>{{ product.productFamily.name }}</td>
+            <td>{{ product.name }}</td>
+            <td>
+              <p-button
+                class="ml-3 mt-3"
+                label="Send Form"
+                (onClick)="addProduct(product)"
+              />
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <!-- ========================== -->
+      <!-- ===== Product to add ===== -->
+      <!-- ========================== -->
+
+      <!-- ============================ -->
+      <!-- ===== Products to save ===== -->
+      <!-- ============================ -->
+      <p-table class="mt-4" [value]="productsOfWorkOrder" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Id</th>
+            <th>SKU</th>
+            <th>Family</th>
+            <th>Name</th>
+            <th>Quantity</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-productInWorkOrder>
+          <tr>
+            <td>{{ productInWorkOrder.id }}</td>
+            <td>{{ productInWorkOrder.codigoSKU }}</td>
+            <td>{{ productInWorkOrder.familyname }}</td>
+            <td>{{ productInWorkOrder.name }}</td>
+            <td>
+              {{ productInWorkOrder.quantity }}
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <!-- ============================ -->
+      <!-- ===== Products to save ===== -->
+      <!-- ============================ -->
+
+
+    </div>
+
+    <button
+      class="ml-auto mt-3"
+      type="submit"
+      pButton
+      pRipple
+    >
+      Send Form
+    </button>
+
+  </form>
 
 </div>
+
 
 
