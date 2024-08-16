@@ -1,6 +1,6 @@
-<div class="mt-2">
+<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="sendForm()">
 
-  <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="sendForm()">
+  <div class="flex flex-column gap-2 px-3">
 
     <div class="grid">
 
@@ -71,7 +71,7 @@
       <!-- ========================== -->
       <!-- ===== Product to add ===== -->
       <!-- ========================== -->
-      <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+      <p-table class="flex flex-column col-12" [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template pTemplate="header">
           <tr>
             <th>Id</th>
@@ -104,7 +104,7 @@
       <!-- ============================ -->
       <!-- ===== Products to save ===== -->
       <!-- ============================ -->
-      <p-table class="mt-4" [value]="productsOfWorkOrder" [tableStyle]="{ 'min-width': '50rem' }">
+      <p-table class="flex flex-column mt-5 col-12" [value]="productsFormArray.controls" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template pTemplate="header">
           <tr>
             <th>Id</th>
@@ -112,16 +112,29 @@
             <th>Family</th>
             <th>Name</th>
             <th>Quantity</th>
+            <th></th>
           </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-productInWorkOrder>
-          <tr>
-            <td>{{ productInWorkOrder.id }}</td>
-            <td>{{ productInWorkOrder.codigoSKU }}</td>
-            <td>{{ productInWorkOrder.familyname }}</td>
-            <td>{{ productInWorkOrder.name }}</td>
+        <ng-template pTemplate="body" let-productFormGroup let-i="rowIndex">
+          <tr [formGroup]="productFormGroup">
+            <td>{{ productFormGroup.get('id').value }}</td>
+            <td>{{ productFormGroup.get('codigoSKU').value }}</td>
+            <td>{{ productFormGroup.get('familyname').value }}</td>
+            <td>{{ productFormGroup.get('name').value }}</td>
             <td>
-              {{ productInWorkOrder.quantity }}
+              <input
+                pInputText
+                id="quantity"
+                aria-describedby="quantity"
+                formControlName="quantity"
+              />
+            </td>
+            <td>
+              <p-button
+                icon="pi pi-trash"
+                class="p-button-danger"
+                (onClick)="removeProduct(i)"
+              ></p-button>
             </td>
           </tr>
         </ng-template>
@@ -142,9 +155,7 @@
       Send Form
     </button>
 
-  </form>
+  </div>
 
-</div>
-
-
+</form>
 
