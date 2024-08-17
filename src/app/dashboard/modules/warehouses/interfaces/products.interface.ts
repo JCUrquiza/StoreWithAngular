@@ -45,15 +45,3 @@ export interface ProductFamily {
 }
 
 
-
-
-export interface ProductWorkOrder {
-  id:           number;
-  name:         string;
-  codigoSKU:    string;
-  familyname:   string;
-  quantity:     number;
-}
-
-
-

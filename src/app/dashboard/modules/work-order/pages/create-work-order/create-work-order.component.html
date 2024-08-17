@@ -1,10 +1,10 @@
-<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="sendForm()">
+<form class="mt-5" autocomplete="off" [formGroup]="myForm" (ngSubmit)="sendForm()">
 
   <div class="flex flex-column gap-2 px-3">
 
     <div class="grid">
 
-      <div class="flex flex-column col-12 md:col-2">
+      <div class="flex flex-column col-12 md:col-3">
         <label for="address">Address</label>
         <input
           pInputText
@@ -12,15 +12,15 @@
           aria-describedby="address"
           formControlName="address"
         />
-        <!-- <small
-          *ngIf="isNotValidField('salePrice')"
+        <small
+          *ngIf="isNotValidField('address')"
           style="color: red; padding-top: 10px;"
         >
-          {{ getFieldError('salePrice') }}
-        </small> -->
+          {{ getFieldError('address') }}
+        </small>
       </div>
 
-      <div class="flex flex-column col-12 md:col-2">
+      <div class="flex flex-column col-12 md:col-3">
         <label for="priceOfLabor">Price Of Labor</label>
         <input
           pInputText
@@ -28,15 +28,15 @@
           aria-describedby="priceOfLabor"
           formControlName="priceOfLabor"
         />
-        <!-- <small
-          *ngIf="isNotValidField('salePrice')"
+        <small
+          *ngIf="isNotValidField('priceOfLabor')"
           style="color: red; padding-top: 10px;"
         >
-          {{ getFieldError('salePrice') }}
-        </small> -->
+          {{ getFieldError('priceOfLabor') }}
+        </small>
       </div>
 
-      <div class="flex flex-column col-12 md:col-2">
+      <div class="flex flex-column col-12 md:col-3">
         <label for="priceOfTransfer">Price Of Transfer</label>
         <input
           pInputText
@@ -44,15 +44,15 @@
           aria-describedby="priceOfTransfer"
           formControlName="priceOfTransfer"
         />
-        <!-- <small
-          *ngIf="isNotValidField('salePrice')"
+        <small
+          *ngIf="isNotValidField('priceOfTransfer')"
           style="color: red; padding-top: 10px;"
         >
-          {{ getFieldError('salePrice') }}
-        </small> -->
+          {{ getFieldError('priceOfTransfer') }}
+        </small>
       </div>
 
-      <div class="flex flex-column col-12 md:col-2">
+      <div class="flex flex-column col-12 md:col-3">
         <label for="priceTotal">Price Total</label>
         <input
           pInputText
@@ -60,12 +60,12 @@
           aria-describedby="priceTotal"
           formControlName="priceTotal"
         />
-        <!-- <small
-          *ngIf="isNotValidField('salePrice')"
+        <small
+          *ngIf="isNotValidField('priceTotal')"
           style="color: red; padding-top: 10px;"
         >
-          {{ getFieldError('salePrice') }}
-        </small> -->
+          {{ getFieldError('priceTotal') }}
+        </small>
       </div>
 
       <!-- ========================== -->
@@ -89,8 +89,7 @@
             <td>{{ product.name }}</td>
             <td>
               <p-button
-                class="ml-3 mt-3"
-                label="Send Form"
+                label="Add"
                 (onClick)="addProduct(product)"
               />
             </td>
@@ -100,11 +99,18 @@
       <!-- ========================== -->
       <!-- ===== Product to add ===== -->
       <!-- ========================== -->
+      <small
+        *ngIf="isNotValidField('productsOfWorkOrder')"
+        style="color: red; padding-top: 10px;"
+      >
+        {{ getFieldError('productsOfWorkOrder') }}
+      </small>
+
 
       <!-- ============================ -->
       <!-- ===== Products to save ===== -->
       <!-- ============================ -->
-      <p-table class="flex flex-column mt-5 col-12" [value]="productsFormArray.controls" [tableStyle]="{ 'min-width': '50rem' }">
+      <p-table class="flex flex-column mt-5 col-12" [value]="productsFormArray.controls" [tableStyle]="{ 'min-width': '50rem' }" *ngIf="showTableProductsToSend">
         <ng-template pTemplate="header">
           <tr>
             <th>Id</th>
@@ -142,7 +148,6 @@
       <!-- ============================ -->
       <!-- ===== Products to save ===== -->
       <!-- ============================ -->
-
 
     </div>
 
