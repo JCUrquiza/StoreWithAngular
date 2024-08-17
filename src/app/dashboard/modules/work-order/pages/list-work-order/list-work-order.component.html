@@ -17,6 +17,7 @@
               <th>Address</th>
               <th>Total Price</th>
               <th>Status</th>
+              <th></th>
             </tr>
           </ng-template>
           <ng-template pTemplate="body" let-workOrder>
@@ -35,6 +36,16 @@
                   [rounded]="true"
                   [severity]="getSeverity(workOrder.status.code)"
                 />
+              </td>
+              <td>
+                <button
+                  type="button"
+                  pButton
+                  pRipple
+                  icon="pi pi-pen-to-square"
+                  (click)="goToDetails(workOrder.id)"
+                >
+                </button>
               </td>
             </tr>
           </ng-template>

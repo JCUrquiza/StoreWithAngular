@@ -10,6 +10,7 @@ import { WorkOrderResponse } from '../interfaces';
 export class WorkOrderService {
 
   private baseUrl: string = `${ environment.baseUrl }/api/v1/workOrder`;
+  public idWorkOrder: number = 0;
 
   constructor(
     public http: HttpClient
@@ -21,6 +22,14 @@ export class WorkOrderService {
 
   public getAll(url: string): Observable<WorkOrderResponse> {
     return this.http.get<WorkOrderResponse>(this.baseUrl + url);
+  }
+
+  public saveId(id: number) {
+    this.idWorkOrder = id;
+  }
+
+  public getId() {
+    return this.idWorkOrder;
   }
 
 }

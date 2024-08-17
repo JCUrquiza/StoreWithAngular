@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { WorkOrderService } from '../../services/work-order.service';
 import { WorkOrder } from '../../interfaces';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-work-order',
@@ -12,6 +13,7 @@ export class ListWorkOrderComponent implements OnInit {
   public workOrdersList: WorkOrder[] = [];
 
   public workOrderService = inject(WorkOrderService);
+  public router = inject(Router);
 
   ngOnInit(): void {
     this.loadWorkOrders();
@@ -36,6 +38,11 @@ export class ListWorkOrderComponent implements OnInit {
       default:
         return undefined;
     }
+  }
+
+  public goToDetails(id: string) {
+    this.router.navigateByUrl('/dashboard/workOrder/details');
+    this.workOrderService.saveId(+id);
   }
 
 }
