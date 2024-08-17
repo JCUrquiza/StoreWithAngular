@@ -71,31 +71,34 @@
       <!-- ========================== -->
       <!-- ===== Product to add ===== -->
       <!-- ========================== -->
-      <p-table class="flex flex-column col-12" [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
-        <ng-template pTemplate="header">
-          <tr>
-            <th>Id</th>
-            <th>SKU</th>
-            <th>Family</th>
-            <th>Name</th>
-            <th></th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-product>
-          <tr>
-            <td>{{ product.id }}</td>
-            <td>{{ product.codigoSKU }}</td>
-            <td>{{ product.productFamily.name }}</td>
-            <td>{{ product.name }}</td>
-            <td>
-              <p-button
-                label="Add"
-                (onClick)="addProduct(product)"
-              />
-            </td>
-          </tr>
-        </ng-template>
-      </p-table>
+      <div class="flex flex-column col-12 mt-5">
+        <label>Products to add:</label>
+        <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Id</th>
+              <th>SKU</th>
+              <th>Family</th>
+              <th>Name</th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-product>
+            <tr>
+              <td>{{ product.id }}</td>
+              <td>{{ product.codigoSKU }}</td>
+              <td>{{ product.productFamily.name }}</td>
+              <td>{{ product.name }}</td>
+              <td>
+                <p-button
+                  label="Add"
+                  (onClick)="addProduct(product)"
+                />
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
       <!-- ========================== -->
       <!-- ===== Product to add ===== -->
       <!-- ========================== -->
@@ -110,41 +113,46 @@
       <!-- ============================ -->
       <!-- ===== Products to save ===== -->
       <!-- ============================ -->
-      <p-table class="flex flex-column mt-5 col-12" [value]="productsFormArray.controls" [tableStyle]="{ 'min-width': '50rem' }" *ngIf="showTableProductsToSend">
-        <ng-template pTemplate="header">
-          <tr>
-            <th>Id</th>
-            <th>SKU</th>
-            <th>Family</th>
-            <th>Name</th>
-            <th>Quantity</th>
-            <th></th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-productFormGroup let-i="rowIndex">
-          <tr [formGroup]="productFormGroup">
-            <td>{{ productFormGroup.get('id').value }}</td>
-            <td>{{ productFormGroup.get('codigoSKU').value }}</td>
-            <td>{{ productFormGroup.get('familyname').value }}</td>
-            <td>{{ productFormGroup.get('name').value }}</td>
-            <td>
-              <input
-                pInputText
-                id="quantity"
-                aria-describedby="quantity"
-                formControlName="quantity"
-              />
-            </td>
-            <td>
-              <p-button
-                icon="pi pi-trash"
-                class="p-button-danger"
-                (onClick)="removeProduct(i)"
-              ></p-button>
-            </td>
-          </tr>
-        </ng-template>
-      </p-table>
+      <div class="flex flex-column col-12 mt-5" *ngIf="showTableProductsToSend">
+        <label>Products of work order:</label>
+        <p-table [value]="productsFormArray.controls" [tableStyle]="{ 'min-width': '50rem' }">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Id</th>
+              <th>SKU</th>
+              <th>Family</th>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-productFormGroup let-i="rowIndex">
+            <tr [formGroup]="productFormGroup">
+              <td>{{ productFormGroup.get('id').value }}</td>
+              <td>{{ productFormGroup.get('codigoSKU').value }}</td>
+              <td>{{ productFormGroup.get('familyname').value }}</td>
+              <td>{{ productFormGroup.get('name').value }}</td>
+              <td>
+                <input
+                  style="text-align: center; width: 150px;"
+                  pInputText
+                  id="quantity"
+                  aria-describedby="quantity"
+                  formControlName="quantity"
+                  maxlength="2"
+                />
+              </td>
+              <td>
+                <p-button
+                  icon="pi pi-trash"
+                  class="p-button-danger"
+                  (onClick)="removeProduct(i)"
+                ></p-button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
       <!-- ============================ -->
       <!-- ===== Products to save ===== -->
       <!-- ============================ -->
@@ -163,4 +171,14 @@
   </div>
 
 </form>
+
+
+<p-toast
+  [showTransformOptions]="'translateY(100%)'"
+  [showTransitionOptions]="'1000ms'"
+  [hideTransitionOptions]="'1000ms'"
+  [hideTransformOptions]="'translateX(100%)'"
+></p-toast>
+
+
 
