@@ -1,1 +1,50 @@
-<p>list-work-order works!</p>
+<div class="flex flex-column gap-2 px-3">
+
+  <div class="grid">
+
+    <!-- ========================== -->
+      <!-- ===== Product to add ===== -->
+      <!-- ========================== -->
+      <div class="flex flex-column col-12 mt-5">
+        <label>Products to add:</label>
+        <p-table [value]="workOrdersList" [tableStyle]="{ 'min-width': '50rem' }">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Id</th>
+              <th>Type Client</th>
+              <th>Customer</th>
+              <th>BranchOffice</th>
+              <th>Address</th>
+              <th>Total Price</th>
+              <th>Status</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-workOrder>
+            <tr>
+              <td>{{ workOrder.id }}</td>
+              <td>{{ workOrder.customer.typeCustomer.name }}</td>
+              <td>
+                {{ workOrder.customer.name }} {{ workOrder.customer.apellidoPaterno }} {{ workOrder.customer.apellidoMaterno }}
+              </td>
+              <td>{{ workOrder.customer.branchOffice.name }}</td>
+              <td>{{ workOrder.address }}</td>
+              <td>{{ workOrder.priceTotal }}</td>
+              <td>
+                <p-tag
+                  [value]="workOrder.status.name"
+                  [rounded]="true"
+                  [severity]="getSeverity(workOrder.status.code)"
+                />
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+      <!-- ========================== -->
+      <!-- ===== Product to add ===== -->
+      <!-- ========================== -->
+
+  </div>
+
+</div>
+
